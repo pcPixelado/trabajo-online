@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = firePoint.up * bulletSpeed;
+        rb.velocity = firePoint.up * bulletSpeed * 10;
 
         // Destruye la bala después de 2 segundos.
         Destroy(bullet, bulletLifetime);
