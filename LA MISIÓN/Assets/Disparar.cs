@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
+        //transform.rotation = 
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = firePoint.up * bulletSpeed;
 
