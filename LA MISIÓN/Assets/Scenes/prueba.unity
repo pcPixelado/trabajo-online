@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 103841093}
   - component: {fileID: 103841095}
   - component: {fileID: 103841094}
+  - component: {fileID: 103841096}
   m_Layer: 5
   m_Name: Puntero
   m_TagString: Untagged
@@ -198,6 +199,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103841092}
   m_CullTransparentMesh: 1
+--- !u!114 &103841096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103841092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbee9cf7ecf57844b18a4ec40fdc76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &428256310
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +485,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1473927877}
   firePoint: {fileID: 740278579}
-  bulletSpeed: 400
 --- !u!1 &735972409
 GameObject:
   m_ObjectHideFlags: 0
