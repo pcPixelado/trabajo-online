@@ -909,9 +909,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1473927877}
   player: {fileID: 566464110}
   firePoint: {fileID: 356729148}
-  bulletSpeed: 200
   timeBetweenShots: 0.7
-  bulletLifetime: 1
+  "JugadorEnElCampoDeVisi\xF3n": 1
 --- !u!212 &1113628396
 SpriteRenderer:
   m_ObjectHideFlags: 0
