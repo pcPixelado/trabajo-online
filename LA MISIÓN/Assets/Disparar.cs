@@ -6,16 +6,21 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float bulletSpeed = 10f;
+    private float bulletSpeed = 9f;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
         }
 
-        //transform.rotation = 
+        Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+        print(angle);
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void Shoot()
