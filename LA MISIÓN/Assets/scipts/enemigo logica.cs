@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab, player;
     public Transform firePoint;
     public float bulletSpeed = 10f;
-    public float timeBetweenShots = 0.1f;
+    public float timeBetweenShots = 0.2f;
     public float bulletLifetime = 2f;
 
     private float nextShotTime = 0f;
@@ -19,11 +19,19 @@ public class EnemyController : MonoBehaviour
             Shoot();
             nextShotTime = Time.time + timeBetweenShots;
         }
+
+        Vector3 vectormouse = - player.transform.position + transform.position;
+
+        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+        print(angle);
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = firePoint.up * bulletSpeed;
 
