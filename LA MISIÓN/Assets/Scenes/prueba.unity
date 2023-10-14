@@ -909,6 +909,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1473927877}
   player: {fileID: 566464110}
   firePoint: {fileID: 356729148}
+  bulletSpeed: 10
   timeBetweenShots: 0.7
   "JugadorEnElCampoDeVisi\xF3n": 1
 --- !u!212 &1113628396
@@ -1362,6 +1363,10 @@ PrefabInstance:
     - target: {fileID: 1833221892305072510, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833221892305072510, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
       propertyPath: m_Name

@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject bulletPrefab, player;
     public Transform firePoint;
-    private float bulletSpeed = 10f;
+    public float bulletSpeed = 10f;
     public float timeBetweenShots = 0.2f;
     private float bulletLifetime = 2f;
 
