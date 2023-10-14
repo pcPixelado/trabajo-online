@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
-    private float bulletSpeed = 9f;
+    private float bulletSpeed = 200f;
 
     void Update()
     {
