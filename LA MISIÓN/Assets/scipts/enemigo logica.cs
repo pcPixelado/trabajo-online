@@ -6,27 +6,32 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject bulletPrefab, player;
     public Transform firePoint;
-    public float bulletSpeed = 10f;
+    private float bulletSpeed = 10f;
     public float timeBetweenShots = 0.2f;
-    public float bulletLifetime = 2f;
+    private float bulletLifetime = 2f;
 
     private float nextShotTime = 0f;
 
+    public bool JugadorEnElCampoDeVisión;
+
     void Update()
     {
-        if (Time.time >= nextShotTime)
+        if (JugadorEnElCampoDeVisión)
         {
-            Shoot();
-            nextShotTime = Time.time + timeBetweenShots;
+            if (Time.time >= nextShotTime)
+            {
+                Shoot();
+                nextShotTime = Time.time + timeBetweenShots;
+            }
+
+            Vector3 vectormouse = -player.transform.position + transform.position;
+
+            float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+            print(angle);
+
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
         }
-
-        Vector3 vectormouse = - player.transform.position + transform.position;
-
-        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
-        print(angle);
-
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
     }
 
     void Shoot()
