@@ -608,7 +608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883768853}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OptionsBtn
         m_Mode: 1
@@ -742,7 +742,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 883768853}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenuManager1, Assembly-CSharp
         m_MethodName: PlayBtn
         m_Mode: 1
         m_Arguments:
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 883768848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54db1227f4638fa45a936c6d865f3846, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e98d732c68e18242a024fe0eb3cb7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1134143096
@@ -1130,7 +1130,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9eee704b2e125cb45b65ac5ad43dbc26, type: 2}
+  - {fileID: 2100000, guid: 0f9016c85e6a1ce4d92640af680e7bf4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1327,7 +1327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb21d06a0f69751429a93dc251701388, type: 2}
+  - {fileID: 2100000, guid: 22792cebf9a138f46a71cb419ed2a5e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
