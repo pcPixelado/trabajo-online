@@ -64,6 +64,10 @@ public class EnemyController : MonoBehaviour
                 Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
                 JugadorEnElCampoDeVisión = true;
             }
+            else if (hit.transform.tag == "Bala")
+            {
+                Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
+            }
             else
             {
                 Debug.DrawRay(transform.position, direction * RangoDeVision, Color.red);

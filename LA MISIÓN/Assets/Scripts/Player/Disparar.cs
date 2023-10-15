@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject bulletPrefab;
     public Transform firePoint;
-    private float bulletSpeed = 200f;
 
+    public Armas armaEquipada;
+
+    public float timer;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
         {
             Shoot();
+        }
+        else if (timer <= armaEquipada.CadenciaDeTiro)
+        {
+            timer = timer + Time.deltaTime;
         }
 
         Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -25,11 +31,16 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = firePoint.up * bulletSpeed;
+        timer = 0;
+        for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
+        {
+            GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0,0,transform.rotation.z + Random.Range(-armaEquipada.Dispersión, armaEquipada.Dispersión)));
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.velocity = firePoint.up * armaEquipada.VelocidadDeLasBalas;
 
-        // Destruye la bala después de 3 segundos.
-        Destroy(bullet, 1f); // 3f representa 3 segundos.
+            // Destruye la bala después de 1 segundos.
+            Destroy(bullet, armaEquipada.AlcanceSegundos); // 1f representa 1 segundos.
+        }
+
     }
 }
