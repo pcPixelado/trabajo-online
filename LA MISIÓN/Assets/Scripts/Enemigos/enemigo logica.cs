@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed = 10f;
     public float timeBetweenShots = 0.2f;
     private float bulletLifetime = 2f;
+    public float RangoDeVision;
+
+    public LayerMask layer;
 
     private float nextShotTime = 0f;
 
@@ -16,6 +19,10 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+
+        Vector3 vectormouse = player.transform.position - transform.position;
+
+        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
         if (JugadorEnElCampoDeVisión)
         {
             if (Time.time >= nextShotTime)
@@ -24,14 +31,14 @@ public class EnemyController : MonoBehaviour
                 nextShotTime = Time.time + timeBetweenShots;
             }
 
-            Vector3 vectormouse = -player.transform.position + transform.position;
-
-            float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
             print(angle);
 
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
         }
+
+        lanzarRaycast(angle);
+
     }
 
     void Shoot()
@@ -42,5 +49,31 @@ public class EnemyController : MonoBehaviour
 
         // Destruye la bala después de 2 segundos.
         Destroy(bullet, bulletLifetime);
+    }
+
+    void lanzarRaycast(float angulo)
+    {
+        Vector2 direction = new Vector2(Mathf.Cos(angulo * Mathf.Deg2Rad), Mathf.Sin(angulo * Mathf.Deg2Rad));
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, RangoDeVision);
+
+        if (hit)
+        {
+            if (hit.transform.tag == "Player")
+            {
+                Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
+                JugadorEnElCampoDeVisión = true;
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, direction * RangoDeVision, Color.red);
+                JugadorEnElCampoDeVisión = false;
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, direction * RangoDeVision, Color.red);
+            JugadorEnElCampoDeVisión = false;
+        }
     }
 }

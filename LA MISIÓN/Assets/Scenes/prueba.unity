@@ -235,13 +235,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356729147}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7120974, w: 0.70208067}
-  m_LocalPosition: {x: -0.899, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 899, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113628397}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &428256310
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +957,10 @@ MonoBehaviour:
   firePoint: {fileID: 356729148}
   bulletSpeed: 200
   timeBetweenShots: 0.7
+  RangoDeVision: 100
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   "JugadorEnElCampoDeVisi\xF3n": 1
 --- !u!212 &1113628396
 SpriteRenderer:
@@ -1433,11 +1437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7152923191678117790, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.37
+      value: 52.4
       objectReference: {fileID: 0}
     - target: {fileID: 7152923191678117790, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.899994
+      value: 10.2
       objectReference: {fileID: 0}
     - target: {fileID: 7152923191678117790, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
       propertyPath: m_LocalPosition.z
