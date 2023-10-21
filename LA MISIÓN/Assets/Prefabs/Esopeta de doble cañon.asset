@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fd4a18560e4c94fb3d164603209312, type: 3}
+  m_Name: "Esopeta de doble ca\xF1on"
+  m_EditorClassIdentifier: 
+  CadenciaDeTiro: 2
+  VelocidadDeLasBalas: 200
+  NumeroDeBalasPorDisparo: 10
+  "Dispersi\xF3n": 180
+  AlcanceSegundos: 1
+  "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
+  sprite: {fileID: 0}
+  Automatica: 0

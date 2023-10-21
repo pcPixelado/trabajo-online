@@ -67,7 +67,6 @@ public class EnemyController : MonoBehaviour
 
         if (hit)
         {
-            print(hit.transform.gameObject);
             if (hit.transform.tag == "Player" /*|| hit == player*/)
             {
                 Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
