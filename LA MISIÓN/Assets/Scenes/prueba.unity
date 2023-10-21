@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 740278579}
-  armaEquipada: {fileID: 11400000, guid: b52dc896369118f4a9478e4eaba25c8b, type: 2}
+  armaEquipada: {fileID: 11400000, guid: acac856f61d0ed040a2bdfab30f65769, type: 2}
   armasExistentes:
   - {fileID: 11400000, guid: b52dc896369118f4a9478e4eaba25c8b, type: 2}
   - {fileID: 11400000, guid: acac856f61d0ed040a2bdfab30f65769, type: 2}
