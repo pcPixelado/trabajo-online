@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
-        print(angle);
+        //print(angle);
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
