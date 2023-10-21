@@ -19,3 +19,4 @@ MonoBehaviour:
   AlcanceSegundos: 1
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
   sprite: {fileID: 0}
+  Automatica: 1
