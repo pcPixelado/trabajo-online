@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fd4a18560e4c94fb3d164603209312, type: 3}
   m_Name: M-16
   m_EditorClassIdentifier: 
-  CadenciaDeTiro: 0.2
+  CadenciaDeTiro: 0.1
   VelocidadDeLasBalas: 250
   NumeroDeBalasPorDisparo: 1
   "Dispersi\xF3n": 5
