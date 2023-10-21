@@ -11,11 +11,11 @@ public class EnemyController : MonoBehaviour
     private float bulletLifetime = 2f;
     public float RangoDeVision;
 
-    public LayerMask layer;
-
     private float nextShotTime = 0f;
 
     public bool JugadorEnElCampoDeVisión;
+
+    public Vector3 posicionesEstrategicas;
 
     void Update()
     {
@@ -31,9 +31,17 @@ public class EnemyController : MonoBehaviour
                 nextShotTime = Time.time + timeBetweenShots;
             }
 
-            print(angle);
+            //print(angle);
 
             transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+
+
+
+
+
+
 
         }
 
@@ -53,13 +61,14 @@ public class EnemyController : MonoBehaviour
 
     void lanzarRaycast(float angulo)
     {
-        Vector2 direction = new Vector2(Mathf.Cos(angulo * Mathf.Deg2Rad), Mathf.Sin(angulo * Mathf.Deg2Rad));
+        Vector3 direction = new Vector2(Mathf.Cos(angulo * Mathf.Deg2Rad), Mathf.Sin(angulo * Mathf.Deg2Rad));
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, RangoDeVision);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + direction * 5, direction, RangoDeVision);
 
         if (hit)
         {
-            if (hit.transform.tag == "Player")
+            print(hit.transform.gameObject);
+            if (hit.transform.tag == "Player" /*|| hit == player*/)
             {
                 Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
                 JugadorEnElCampoDeVisión = true;
