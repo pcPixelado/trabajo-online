@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public Armas armaEquipada;
 
+    public Armas[] armasExistentes;
+
     public float timer;
     void Update()
     {
