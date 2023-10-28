@@ -12,7 +12,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OptionsBtn()
     {
-
+        SceneManager.LoadScene("Nivel 2");
     }
 
 }
