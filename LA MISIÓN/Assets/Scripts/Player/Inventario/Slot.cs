@@ -5,8 +5,14 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public int SlotQueSoy;
+    private InventarioManager inventarioManager;
     void Start()
     {
-        //int cosas = transform.parent.parent.GetComponent<InventarioManager>().slots.Length;
+        inventarioManager = transform.parent.parent.GetComponent<InventarioManager>();
+    }
+
+    public void itemSelected()
+    {
+        inventarioManager.BtnPressed(SlotQueSoy);
     }
 }

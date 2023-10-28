@@ -19,13 +19,18 @@ public class InventarioManager : MonoBehaviour
         {
             for (int j = 0; j < slotsX; j++)
             {
-                slots[j, i] = slotsDetected[slotsDetected.Length-(i * slotsX + j) -1];
-                slots[j, i].GetComponent<Slot>().SlotQueSoy = slotsDetected.Length - (i * slotsX + j) -1;
+                slots[j, i] = slotsDetected[(i * slotsX + j)];
+                slots[j, i].GetComponent<Slot>().SlotQueSoy = 53 - (i * slotsX + j);
             }
         }
     }
     void Update()
     {
         
+    }
+
+    public void BtnPressed(int Btn)
+    {
+        print(Btn);
     }
 }
