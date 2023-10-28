@@ -5,16 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    private GameObject bulletPrefab, player;
+    public Armas armaEquipada;
+
+    private GameObject player;
     public Transform firePoint;
-    public float bulletSpeed = 10f;
-    public float timeBetweenShots = 0.2f;
-    private float bulletLifetime = 2f;
+    public float Firetime = 0;
     public float RangoDeVision;
 
-    private float nextShotTime = 0f;
-
-    public bool JugadorEnElCampoDeVisión;
+    private bool JugadorEnElCampoDeVisión;
 
     public Vector3 posicionesEstrategicas;
 
@@ -38,11 +36,12 @@ public class EnemyController : MonoBehaviour
         float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
         if (JugadorEnElCampoDeVisión)
         {
-            if (Time.time >= nextShotTime)
+            if (Firetime > armaEquipada.CadenciaDeTiro)
             {
                 Shoot();
-                nextShotTime = Time.time + timeBetweenShots;
+                Firetime = 0;
             }
+            else Firetime += Time.deltaTime;
 
             //print(angle);
 
@@ -63,12 +62,12 @@ public class EnemyController : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = firePoint.up * bulletSpeed;
+        rb.velocity = firePoint.up * armaEquipada.VelocidadDeLasBalas;
 
         // Destruye la bala después de 2 segundos.
-        Destroy(bullet, bulletLifetime);
+        Destroy(bullet, armaEquipada.AlcanceSegundos);
     }
 
     void lanzarRaycast(float angulo)

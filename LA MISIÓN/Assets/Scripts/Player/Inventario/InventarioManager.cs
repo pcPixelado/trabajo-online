@@ -10,7 +10,7 @@ public class InventarioManager : MonoBehaviour
 
     public int slotsX, slotsY;
 
-    private void Start()
+    private void Awake()
     {
         slots = new GameObject[slotsX, slotsY];
         slotsDetected = GameObject.FindGameObjectsWithTag("Slot");
@@ -19,19 +19,13 @@ public class InventarioManager : MonoBehaviour
         {
             for (int j = 0; j < slotsX; j++)
             {
-                slots[j, i] = slotsDetected[i * slotsX + j];
+                slots[j, i] = slotsDetected[slotsDetected.Length-(i * slotsX + j) -1];
+                slots[j, i].GetComponent<Slot>().SlotQueSoy = slotsDetected.Length - (i * slotsX + j) -1;
             }
         }
     }
     void Update()
     {
-        if (slots[slotsX,slotsY] == slotsDetected[slotsDetected.Length])
-        {
-            print("que locura");
-        }
-        else
-        {
-            print(slots[slotsX, slotsY] + " " + slotsDetected[slotsDetected.Length]);
-        }
+        
     }
 }

@@ -131,15 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30bb312cf7b2484b8cc68b0e58d31b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
-  player: {fileID: 0}
+  armaEquipada: {fileID: 11400000, guid: 9648a86ba3bd22548b3f61acbdf89170, type: 2}
   firePoint: {fileID: 958489068953975758}
-  bulletSpeed: 200
-  timeBetweenShots: 0.7
+  Firetime: 0
   RangoDeVision: 100
-  "JugadorEnElCampoDeVisi\xF3n": 1
   posicionesEstrategicas: {x: 0, y: 0, z: 0}
-  agent: {fileID: 0}
+  SeguirAlJugador: 1
 --- !u!50 &2539091902321498807
 Rigidbody2D:
   serializedVersion: 4
