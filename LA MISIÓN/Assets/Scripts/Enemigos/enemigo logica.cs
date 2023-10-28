@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject bulletPrefab, player;
+    private GameObject bulletPrefab, player;
     public Transform firePoint;
     public float bulletSpeed = 10f;
     public float timeBetweenShots = 0.2f;
@@ -16,6 +17,18 @@ public class EnemyController : MonoBehaviour
     public bool JugadorEnElCampoDeVisión;
 
     public Vector3 posicionesEstrategicas;
+
+    public bool SeguirAlJugador;
+
+    private Vector3 destination;
+    private NavMeshAgent agent;
+    public void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+    }
 
     void Update()
     {
@@ -34,15 +47,14 @@ public class EnemyController : MonoBehaviour
             //print(angle);
 
             transform.rotation = Quaternion.Euler(0, 0, angle);
-
-
-
-
-
-
-
-
-
+        }
+        else 
+        {
+            if (SeguirAlJugador)
+            {
+                destination = player.transform.position;
+                agent.SetDestination(new Vector3(destination.x, destination.y, transform.position.z));
+            }
         }
 
         lanzarRaycast(angle);
