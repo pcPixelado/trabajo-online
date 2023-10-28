@@ -14,5 +14,14 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Nivel 2");
     }
+    public void level3Btn()
+    {
+        SceneManager.LoadScene("Nivel 3");
+    }
+
+    public void level4Btn()
+    {
+        SceneManager.LoadScene("Nivel 4");
+    }
 
 }
