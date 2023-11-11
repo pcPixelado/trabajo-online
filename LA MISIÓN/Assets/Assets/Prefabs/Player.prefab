@@ -578,7 +578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126, y: 14}
+  m_AnchoredPosition: {x: -130, y: 14}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &987929763743687016
@@ -680,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8688268709060815308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3979188147323051864}
-  armaEquipada: {fileID: 11400000, guid: b52dc896369118f4a9478e4eaba25c8b, type: 2}
+  armaEquipada: {fileID: 11400000, guid: 9648a86ba3bd22548b3f61acbdf89170, type: 2}
   timer: 0
 --- !u!1 &4032136367501878307
 GameObject:
@@ -1218,6 +1218,12 @@ MonoBehaviour:
   slotsDetected: []
   slotsX: 9
   slotsY: 6
+  armasEquipadas:
+  - {fileID: 11400000, guid: 9648a86ba3bd22548b3f61acbdf89170, type: 2}
+  - {fileID: 11400000, guid: acac856f61d0ed040a2bdfab30f65769, type: 2}
+  - {fileID: 11400000, guid: b52dc896369118f4a9478e4eaba25c8b, type: 2}
+  - {fileID: 11400000, guid: 16115faad71f53e41b765a39e7c26d67, type: 2}
+  playerController: {fileID: 9133521111968741879}
 --- !u!1 &5013052065296397428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128, y: 17}
+  m_AnchoredPosition: {x: 123, y: 17}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2812592096099787037
@@ -1576,7 +1582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.041877236, y: 0.88778025}
   m_AnchorMax: {x: 0.32687697, y: 0.96000004}
-  m_AnchoredPosition: {x: 0.38726807, y: 4.29431}
+  m_AnchoredPosition: {x: 0.38720703, y: 4.2943115}
   m_SizeDelta: {x: 1.0496063, y: 8.411194}
   m_Pivot: {x: 0.50000006, y: 0.49999952}
 --- !u!222 &7775255680961638638
