@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 5f;
-    public float runSpeed = 10f; // Velocidad de carrera
+    public float walkSpeed = 11f;
+    public float runSpeed = 25f; // Velocidad de carrera
     public Rigidbody2D rig;
     private bool isRunning = false; // Variable para rastrear si el jugador está corriendo
 
@@ -30,7 +30,11 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed = isRunning ? runSpeed : walkSpeed;
 
         // Mover al personaje
-        rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed,
-            Input.GetAxis("Vertical") * currentSpeed);
+
+        if (!Input.GetKey(KeyCode.Mouse1))
+        {
+            rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
+        }
+        else rig.velocity = rig.velocity / 2;
     }
 }

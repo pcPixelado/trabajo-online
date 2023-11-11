@@ -31,9 +31,24 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
 
-        Vector3 vectormouse = player.transform.position - transform.position;
 
-        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+
+
+        if (JugadorEnElCampoDeVisión)
+        {
+            destination = player.transform.position;
+            
+        }
+
+
+
+
+
+
+
+        Vector3 vectorDestination = destination - transform.position;
+        float angle = Mathf.Atan2(vectorDestination.y, vectorDestination.x) * Mathf.Rad2Deg;
+
         if (JugadorEnElCampoDeVisión)
         {
             if (Firetime > armaEquipada.CadenciaDeTiro)
@@ -44,20 +59,19 @@ public class EnemyController : MonoBehaviour
             else Firetime += Time.deltaTime;
 
             //print(angle);
-
+            agent.SetDestination(new Vector3(destination.x, destination.y, transform.position.z));
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
         else 
         {
-            if (SeguirAlJugador)
-            {
-                destination = player.transform.position;
-                agent.SetDestination(new Vector3(destination.x, destination.y, transform.position.z));
-            }
+            agent.SetDestination(new Vector3(destination.x, destination.y, transform.position.z));
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        lanzarRaycast(angle);
+        Vector3 playerDirection = player.transform.position - transform.position;
+        float rayCastAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
 
+        lanzarRaycast(rayCastAngle);
     }
 
     void Shoot()

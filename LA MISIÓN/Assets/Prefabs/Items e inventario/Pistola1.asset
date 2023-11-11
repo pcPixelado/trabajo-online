@@ -17,5 +17,7 @@ MonoBehaviour:
   NumeroDeBalasPorDisparo: 1
   "Dispersi\xF3n": 0
   AlcanceSegundos: 1
+  mirillaDeApuntado: 2.5
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
   sprite: {fileID: 0}
+  Automatica: 0
