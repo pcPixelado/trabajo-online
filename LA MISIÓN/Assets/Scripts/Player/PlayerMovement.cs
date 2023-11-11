@@ -35,6 +35,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
         }
-        else rig.velocity = rig.velocity / 2;
+        else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
     }
 }

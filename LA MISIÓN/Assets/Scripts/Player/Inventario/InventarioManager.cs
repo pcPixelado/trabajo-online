@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventarioManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class InventarioManager : MonoBehaviour
 
     public int slotsX, slotsY;
 
+    private bool inventarioAbierto = false;
     private void Awake()
     {
         slots = new GameObject[slotsX, slotsY];
@@ -26,7 +28,18 @@ public class InventarioManager : MonoBehaviour
     }
     void Update()
     {
-        
+        if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
+        {
+            transform.GetChild(0).GetComponent<Image>().enabled = false;
+            transform.GetChild(1).GetComponent<Image>().enabled = false;
+            inventarioAbierto = false;
+        }
+        else if (!inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
+        {
+            transform.GetChild(0).GetComponent<Image>().enabled = true;
+            transform.GetChild(1).GetComponent<Image>().enabled = true;
+            inventarioAbierto = true;
+        }
     }
 
     public void BtnPressed(int Btn)
