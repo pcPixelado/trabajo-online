@@ -15,9 +15,9 @@ MonoBehaviour:
   CadenciaDeTiro: 1
   VelocidadDeLasBalas: 200
   NumeroDeBalasPorDisparo: 1
-  "Dispersi\xF3n": 0
+  "Dispersi\xF3n": 1
   AlcanceSegundos: 1
   mirillaDeApuntado: 2.5
-  "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
+  "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 1c07e01739bbc3841a6e02cb3c3e02e5, type: 3}
   sprite: {fileID: 0}
   Automatica: 0

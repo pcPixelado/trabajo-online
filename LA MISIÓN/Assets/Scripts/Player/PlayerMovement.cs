@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 11f;
+    public float vida, vidaRestante, walkSpeed = 11f;
     public float runSpeed = 25f; // Velocidad de carrera
     public Rigidbody2D rig;
     private bool isRunning = false; // Variable para rastrear si el jugador está corriendo
+    public Image BarraDeVida;
 
     private void Start()
     {
+        vidaRestante = vida;
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -36,5 +39,17 @@ public class PlayerMovement : MonoBehaviour
             rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
         }
         else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bala")
+        {
+            vidaRestante -= collision.transform.localScale.z;
+
+            BarraDeVida.fillAmount = vidaRestante/vida;
+
+            Destroy(collision.gameObject);
+        }
     }
 }

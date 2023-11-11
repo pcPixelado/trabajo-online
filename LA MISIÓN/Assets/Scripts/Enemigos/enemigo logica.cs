@@ -20,8 +20,13 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 destination;
     private NavMeshAgent agent;
+
+    public float vida = 10;
+    private float vidaRestante;
     public void Awake()
     {
+        vidaRestante = vida;
+
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -111,6 +116,21 @@ public class EnemyController : MonoBehaviour
         {
             Debug.DrawRay(transform.position, direction * RangoDeVision, Color.red);
             JugadorEnElCampoDeVisión = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bala")
+        {
+            vidaRestante -= collision.transform.localScale.z;
+
+            Destroy(collision.gameObject);
+        }
+
+        if (vidaRestante < 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

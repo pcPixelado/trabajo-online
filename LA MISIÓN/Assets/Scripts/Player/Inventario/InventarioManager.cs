@@ -12,6 +12,11 @@ public class InventarioManager : MonoBehaviour
     public int slotsX, slotsY;
 
     private bool inventarioAbierto = false;
+
+    public Armas[] armasEquipadas;
+
+    public PlayerController playerController;
+
     private void Awake()
     {
         slots = new GameObject[slotsX, slotsY];
@@ -31,14 +36,31 @@ public class InventarioManager : MonoBehaviour
         if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
             transform.GetChild(0).GetComponent<Image>().enabled = false;
-            transform.GetChild(1).GetComponent<Image>().enabled = false;
+            transform.GetChild(1).gameObject.SetActive(false);
             inventarioAbierto = false;
         }
         else if (!inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
             transform.GetChild(0).GetComponent<Image>().enabled = true;
-            transform.GetChild(1).GetComponent<Image>().enabled = true;
+            transform.GetChild(1).gameObject.SetActive(true);
             inventarioAbierto = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            playerController.armaEquipada = armasEquipadas[0];
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            playerController.armaEquipada = armasEquipadas[1];
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            playerController.armaEquipada = armasEquipadas[2];
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            playerController.armaEquipada = armasEquipadas[3];
         }
     }
 
