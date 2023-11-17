@@ -9,6 +9,7 @@ public class ItemGround : MonoBehaviour
     public ItemInfo info;
     public GameObject indicador;
     private InventoryManager inventoryManager;
+    private bool OnTrigger;
     private void Awake()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("InventoryManager").GetComponent<InventoryManager>();
@@ -16,13 +17,9 @@ public class ItemGround : MonoBehaviour
     void Update()
     {
         spriteRenderer.sprite = info.sprite;
-    }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (OnTrigger)
         {
-            indicador.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
                 inventoryManager.NewItemOnInventory(info);
@@ -31,11 +28,21 @@ public class ItemGround : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            indicador.SetActive(true);
+            OnTrigger = true;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             indicador.SetActive(false);
+            OnTrigger = false;
         }
     }
 }

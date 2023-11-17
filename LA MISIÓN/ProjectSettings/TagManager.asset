@@ -8,6 +8,7 @@ TagManager:
   - Bala
   - Slot
   - InventoryManager
+  - Item
   layers:
   - Default
   - TransparentFX

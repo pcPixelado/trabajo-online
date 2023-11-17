@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject[,] slots;
     public bool[,] slotsOcupados;
 
-    public GameObject[] slotsDetected;
+    public GameObject[] slotsDetected, itemsDentroDelinventario;
 
     public int slotsX, slotsY;
 
@@ -31,12 +31,32 @@ public class InventoryManager : MonoBehaviour
             for (int j = 0; j < slotsX; j++)
             {
                 slots[j, i] = slotsDetected[(i * slotsX + j)];
-                slots[j, i].GetComponent<Slot>().SlotQueSoy = 53 - (i * slotsX + j);
+                slots[j, i].GetComponent<Slot>().SlotQueSoy = i * slotsX + j;
             }
         }
     }
+
+    public void recargarSlotsOcupados()
+    {
+        for (int i = 0; i < slotsY; i++)
+        {
+            for (int j = 0; j < slotsX; j++)
+            {
+
+                for (int k = 0; k < itemsDentroDelinventario.Length; k++)
+                {
+                    slots[j, i].GetComponent<Slot>().DetectarSiOcupado(itemsDentroDelinventario[k].GetComponent<RectTransform>());
+                }
+
+                slotsOcupados[j, i] = slots[j, i].GetComponent<Slot>().Ocupado;
+            }
+        }
+    }
+
     void Update()
     {
+        itemsDentroDelinventario = GameObject.FindGameObjectsWithTag("Item");
+
         if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
             transform.GetChild(0).GetComponent<Image>().enabled = false;
@@ -48,6 +68,8 @@ public class InventoryManager : MonoBehaviour
             transform.GetChild(0).GetComponent<Image>().enabled = true;
             transform.GetChild(1).gameObject.SetActive(true);
             inventarioAbierto = true;
+
+            recargarSlotsOcupados();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -71,6 +93,7 @@ public class InventoryManager : MonoBehaviour
     public void BtnPressed(int Btn)
     {
         print(Btn);
+        recargarSlotsOcupados();
     }
 
     public GameObject item;
@@ -81,20 +104,26 @@ public class InventoryManager : MonoBehaviour
     {
         int ancho = info.SlotsX;
         int alto = info.SlotsY;
-        
 
+        recargarSlotsOcupados();
 
         PosicionLibre posicionLibre = EncontrarPosicionLibre(slotsOcupados, ancho, alto);
 
         // Muestra el resultado
         if (posicionLibre != null)
         {
-           // Instantiate(item, slots[ancho-posicionLibre.Fila, alto-posicionLibre.Columna].transform.position, Quaternion.identity, ObjetosEnElInventario);------------------------------------------
+            float posicionObjetivoX = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.x;
+            float posicionObjetivoY = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.y;
+
+            Instantiate(item, new Vector3(posicionObjetivoX - 27, posicionObjetivoY + 27), Quaternion.identity, ObjetosEnElInventario);
+            // esos numeros "27" no son fijos y en caso de que no salga el item bien en la cuadricula hay que ajustarlos
         }
         else
         {
             Console.WriteLine("No se encontró espacio libre para el objeto.");
         }
+
+        recargarSlotsOcupados();
 
     }
     // Función para encontrar la primera posición libre para un objeto en la matriz
