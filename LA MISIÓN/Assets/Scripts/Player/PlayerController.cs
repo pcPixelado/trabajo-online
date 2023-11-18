@@ -10,11 +10,24 @@ public class PlayerController : MonoBehaviour
     public Armas armaEquipada;
 
     public float timer;
+
+    public InventoryManager inventoryManager;
     void Update()
     {
-        if (armaEquipada.Automatica)
+        if (!inventoryManager.inventarioAbierto)
         {
-            if (Input.GetKey(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+            if (armaEquipada.Automatica)
+            {
+                if (Input.GetKey(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+                {
+                    Shoot();
+                }
+                else if (timer <= armaEquipada.CadenciaDeTiro)
+                {
+                    timer = timer + Time.deltaTime;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
             {
                 Shoot();
             }
@@ -22,23 +35,16 @@ public class PlayerController : MonoBehaviour
             {
                 timer = timer + Time.deltaTime;
             }
+
+            Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+            float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+            //print(angle);
+
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
-        {
-            Shoot();
-        }
-        else if (timer <= armaEquipada.CadenciaDeTiro)
-        {
-            timer = timer + Time.deltaTime;
-        }
 
-
-        Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
-        //print(angle);
-
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void Shoot()

@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     public int slotsX, slotsY;
 
-    private bool inventarioAbierto = false;
+    [HideInInspector]public bool inventarioAbierto = false;
 
     public Armas[] armasEquipadas;
 

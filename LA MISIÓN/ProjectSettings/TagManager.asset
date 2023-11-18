@@ -9,6 +9,7 @@ TagManager:
   - Slot
   - InventoryManager
   - Item
+  - ClickDerecho
   layers:
   - Default
   - TransparentFX

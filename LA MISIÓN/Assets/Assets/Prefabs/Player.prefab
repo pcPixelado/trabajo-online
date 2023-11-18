@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3781909238511985280}
+  inventory: {fileID: 950681896722476611}
 --- !u!114 &5617364652531401006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1214,6 +1215,7 @@ MonoBehaviour:
   firePoint: {fileID: 3979188147323051864}
   armaEquipada: {fileID: 11400000, guid: 9648a86ba3bd22548b3f61acbdf89170, type: 2}
   timer: 0
+  inventoryManager: {fileID: 950681896722476611}
 --- !u!1 &4032136367501878307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1432,7 @@ MonoBehaviour:
   itemsDentroDelinventario: []
   slotsX: 9
   slotsY: 6
+  inventarioAbierto: 0
   armasEquipadas:
   - {fileID: 11400000, guid: 9648a86ba3bd22548b3f61acbdf89170, type: 2}
   - {fileID: 11400000, guid: acac856f61d0ed040a2bdfab30f65769, type: 2}
@@ -2915,7 +2918,7 @@ GameObject:
   - component: {fileID: 739343631356548149}
   m_Layer: 5
   m_Name: ClickDerecho
-  m_TagString: Untagged
+  m_TagString: ClickDerecho
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2991,7 +2994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e569452ee0be94e9f8abfcde373a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 0}
+  objetoSeleccionado: {fileID: 0}
+  objetoEnElSuelo: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
 --- !u!1001 &55325210845892540
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,14 @@ public class ItemInventory : MonoBehaviour
 {
     public Image image;
     public ItemInfo info;
+    public RectTransform rectTransform;
+    public GameObject clickDerecho;
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        clickDerecho = GameObject.FindGameObjectWithTag("ClickDerecho");
+    }
     void Update()
     {
         image.sprite = info.sprite;
@@ -21,12 +30,17 @@ public class ItemInventory : MonoBehaviour
 
 
 
+        Rect uiObjectLocalRect = new Rect(rectTransform.position.x, rectTransform.position.y - rectTransform.rect.height, rectTransform.rect.width, rectTransform.rect.height);
 
 
+        if (uiObjectLocalRect.Contains(Input.mousePosition))
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                clickDerecho.transform.position = Input.mousePosition;
 
-
-
+                clickDerecho.GetComponent<ItemSeleccionado>().objetoSeleccionado = gameObject;
+            }
+        }
     }
-
-
 }

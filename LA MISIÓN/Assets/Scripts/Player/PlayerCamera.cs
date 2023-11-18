@@ -9,9 +9,11 @@ public class PlayerCamera : MonoBehaviour
     private float Alejamiento = 3;
 
     private Vector3 posicionDeLacamara;
+
+    public InventoryManager inventory;
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1) && !inventory.inventarioAbierto)
         {
             Alejamiento = player.GetComponent<PlayerController>().armaEquipada.mirillaDeApuntado;
 
