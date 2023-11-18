@@ -117,8 +117,10 @@ public class InventoryManager : MonoBehaviour
             float posicionObjetivoX = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.x;
             float posicionObjetivoY = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.y;
 
-            Instantiate(item, new Vector3(posicionObjetivoX - 18, posicionObjetivoY + 18), Quaternion.identity, ObjetosEnElInventario);
+            GameObject newItem = Instantiate(item, new Vector3(posicionObjetivoX - 18, posicionObjetivoY + 18), Quaternion.identity, ObjetosEnElInventario);
             // esos numeros "18" no son fijos y en caso de que no salga el item bien en la cuadricula hay que ajustarlos
+
+            newItem.GetComponent<ItemInventory>().info = info;
         }
         else
         {

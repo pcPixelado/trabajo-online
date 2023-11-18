@@ -18,5 +18,15 @@ public class ItemInventory : MonoBehaviour
 
         spriteRectTransform.sizeDelta = new Vector2(info.sprite.rect.width, info.sprite.rect.height);
         spriteRectTransform.localScale = new Vector3(info.inventoryScale, info.inventoryScale);
+
+
+
+
+
+
+
+
     }
+
+
 }
