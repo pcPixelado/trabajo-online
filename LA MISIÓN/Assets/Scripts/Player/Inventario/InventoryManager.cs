@@ -103,15 +103,14 @@ public class InventoryManager : MonoBehaviour
 
     public void NewItemOnInventory(ItemInfo info)
     {
-        int ancho = 5;
-        int alto = 2;
+        int ancho = info.SlotsX - 1;
+        int alto = info.SlotsY - 1;
 
         recargarSlotsOcupados();
 
         PosicionLibre posicionLibre = EncontrarPosicionLibre(slotsOcupados, ancho, alto);
 
 
-        print("1");
         // Muestra el resultado
         if (posicionLibre != null)
         {
@@ -120,12 +119,10 @@ public class InventoryManager : MonoBehaviour
 
             Instantiate(item, new Vector3(posicionObjetivoX - 18, posicionObjetivoY + 18), Quaternion.identity, ObjetosEnElInventario);
             // esos numeros "18" no son fijos y en caso de que no salga el item bien en la cuadricula hay que ajustarlos
-            print("2");
         }
         else
         {
-            print("3");
-            Console.WriteLine("No se encontró espacio libre para el objeto.");
+            print("No se encontró espacio libre para el objeto.");
         }
 
         recargarSlotsOcupados();
@@ -137,15 +134,15 @@ public class InventoryManager : MonoBehaviour
         int filas = matriz.GetLength(0);
         int columnas = matriz.GetLength(1);
 
-        for (int fila = 0; fila <= filas - altoObjeto; fila++)
-        {
-            for (int columna = 0; columna <= columnas - anchoObjeto; columna++)
+        for (int columna = 0; columna < columnas - altoObjeto; columna++)
+        { 
+            for (int fila = 0; fila < filas - anchoObjeto; fila++)
             {
                 // Verifica si hay suficiente espacio libre para el objeto en esta posición
                 bool espacioLibre = true;
-                for (int i = fila; i < fila + altoObjeto; i++)
+                for (int i = fila; i <= fila + anchoObjeto; i++)
                 {
-                    for (int j = columna; j < columna + anchoObjeto; j++)
+                    for (int j = columna; j <= columna + altoObjeto; j++)
                     {
                         if (matriz[i, j] == true)
                         {
@@ -155,6 +152,9 @@ public class InventoryManager : MonoBehaviour
                     }
                     if (!espacioLibre) break;
                 }
+
+
+                print(matriz[fila,columna] + " + " + columnas + " y " + filas);
 
                 // Si encontramos espacio libre, devuelve la posición
                 if (espacioLibre)
