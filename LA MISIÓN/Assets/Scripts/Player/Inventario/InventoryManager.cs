@@ -132,7 +132,7 @@ public class InventoryManager : MonoBehaviour
             float posicionObjetivoX = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.x;
             float posicionObjetivoY = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.y;
 
-            GameObject newItem = Instantiate(item, new Vector3(posicionObjetivoX, posicionObjetivoY), Quaternion.identity, ObjetosEnElInventario);
+            GameObject newItem = Instantiate(item, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
 
             newItem.GetComponent<ItemInventory>().info = info;
 
