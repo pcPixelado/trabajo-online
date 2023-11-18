@@ -61,14 +61,29 @@ public class InventoryManager : MonoBehaviour
         if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
             transform.GetChild(0).GetComponent<Image>().enabled = false;
-            transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(1).GetComponent<Image>().enabled = false;
+            transform.GetChild(2).gameObject.SetActive(false);
+
+            for (int i = 0; i < itemsDentroDelinventario.Length; i++)
+            {
+                itemsDentroDelinventario[i].GetComponent<Image>().enabled = false;
+                itemsDentroDelinventario[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            }
+
             inventarioAbierto = false;
         }
         else if (!inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
             transform.GetChild(0).GetComponent<Image>().enabled = true;
-            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(1).GetComponent<Image>().enabled = true;
+            transform.GetChild(2).gameObject.SetActive(true);
             inventarioAbierto = true;
+
+            for (int i = 0; i < itemsDentroDelinventario.Length; i++)
+            {
+                itemsDentroDelinventario[i].GetComponent<Image>().enabled = true;
+                itemsDentroDelinventario[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+            }
 
             recargarSlotsOcupados();
         }
@@ -121,6 +136,18 @@ public class InventoryManager : MonoBehaviour
             // esos numeros "18" no son fijos y en caso de que no salga el item bien en la cuadricula hay que ajustarlos
 
             newItem.GetComponent<ItemInventory>().info = info;
+
+            if (inventarioAbierto)
+            {
+                newItem.GetComponent<Image>().enabled = true;
+                newItem.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            }
+            else
+            {
+                newItem.GetComponent<Image>().enabled = false;
+                newItem.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            }
+
         }
         else
         {
