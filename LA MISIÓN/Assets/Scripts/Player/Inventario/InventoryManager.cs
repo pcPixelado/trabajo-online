@@ -42,6 +42,7 @@ public class InventoryManager : MonoBehaviour
         {
             for (int j = 0; j < slotsX; j++)
             {
+                slots[j, i].GetComponent<Slot>().clear();
 
                 for (int k = 0; k < itemsDentroDelinventario.Length; k++)
                 {
@@ -102,24 +103,28 @@ public class InventoryManager : MonoBehaviour
 
     public void NewItemOnInventory(ItemInfo info)
     {
-        int ancho = info.SlotsX;
-        int alto = info.SlotsY;
+        int ancho = 5;
+        int alto = 2;
 
         recargarSlotsOcupados();
 
         PosicionLibre posicionLibre = EncontrarPosicionLibre(slotsOcupados, ancho, alto);
 
+
+        print("1");
         // Muestra el resultado
         if (posicionLibre != null)
         {
             float posicionObjetivoX = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.x;
             float posicionObjetivoY = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.y;
 
-            Instantiate(item, new Vector3(posicionObjetivoX - 27, posicionObjetivoY + 27), Quaternion.identity, ObjetosEnElInventario);
-            // esos numeros "27" no son fijos y en caso de que no salga el item bien en la cuadricula hay que ajustarlos
+            Instantiate(item, new Vector3(posicionObjetivoX - 18, posicionObjetivoY + 18), Quaternion.identity, ObjetosEnElInventario);
+            // esos numeros "18" no son fijos y en caso de que no salga el item bien en la cuadricula hay que ajustarlos
+            print("2");
         }
         else
         {
+            print("3");
             Console.WriteLine("No se encontró espacio libre para el objeto.");
         }
 

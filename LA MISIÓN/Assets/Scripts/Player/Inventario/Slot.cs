@@ -14,13 +14,18 @@ public class Slot : MonoBehaviour
         uiObjectRect = GetComponent<RectTransform>();
     }
 
+    public void clear()
+    {
+        Ocupado = false;
+    }
+
     public void DetectarSiOcupado(RectTransform objetoEnElInventario)
     {
-        Rect uiObjectLocalRect = objetoEnElInventario.rect;
+        Rect uiObjectLocalRect = new Rect(objetoEnElInventario.anchoredPosition.x, objetoEnElInventario.anchoredPosition.y - objetoEnElInventario.rect.height, objetoEnElInventario.rect.width, objetoEnElInventario.rect.height);
 
-        Ocupado = uiObjectLocalRect.Contains(uiObjectRect.rect.center);
-        print(uiObjectLocalRect + " y " + uiObjectRect.position);
-        if (Ocupado) print(Ocupado + " es " + gameObject);
+        if(!Ocupado)Ocupado = uiObjectLocalRect.Contains(uiObjectRect.anchoredPosition);
+
+        //if (Ocupado) print(Ocupado + " es " + gameObject);
     }
 
     public void itemSelected()
