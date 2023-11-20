@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemInventory : MonoBehaviour
+public class ArmasInventory : MonoBehaviour
 {
     public Image image;
     public ItemInfo info;
@@ -13,9 +11,12 @@ public class ItemInventory : MonoBehaviour
     public GameObject clickDerecho;
     public InventoryManager inventoryManager;
 
-    public int Munición;
+    public int Mejoras;
 
-    public TMP_Text AmmoIndicator;
+    public bool CartuchoEquipado;
+    public int MunicionEnElCartucho;
+
+    public ItemInfo cartucho;
 
     private void Awake()
     {
@@ -23,18 +24,62 @@ public class ItemInventory : MonoBehaviour
         clickDerecho = GameObject.FindGameObjectWithTag("ClickDerecho");
 
         spriteRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
+    }
 
-        image.enabled = false;
+    public void CambioDeCartucho()
+    {
+        SacarCartucho();
+        MeterCartucho();
+    }
+
+    public void SacarCartucho()
+    {
+        if (CartuchoEquipado)
+        {
+            CartuchoEquipado = false;
+            inventoryManager.NewItemOnInventory(cartucho, MunicionEnElCartucho);
+            MunicionEnElCartucho = 0;
+        }
+    }
+
+    public void MeterCartucho()
+    {
+        for (int i = 0; i < inventoryManager.itemsDentroDelinventario.Length; i++)
+        {
+            if (inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>() != null)
+            {
+                MunicionEnElCartucho = inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>().Munición;
+                cartucho = inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>().info;
+                Destroy(inventoryManager.itemsDentroDelinventario[i]);
+                CartuchoEquipado = true;
+                break;
+            }
+        }
     }
     public bool AgarrandoItem;
     private Vector2 PosicionInicial, distanciaAlCentro, NuevaPosiblePosicion;
     void Update()
     {
-        image.sprite = info.sprite[0];
+        if (Input.GetKeyDown(KeyCode.R) && !CartuchoEquipado)
+        {
+            MeterCartucho();
+        }
+        else if (Input.GetKeyDown(KeyCode.R) && CartuchoEquipado)
+        {
+            CambioDeCartucho();
+        }
+
+        int estado;
+
+        if (CartuchoEquipado) estado = Mejoras + info.sprite.Length / 2;
+        else estado = Mejoras;
+
+
+        image.sprite = info.sprite[estado];
 
         rectTransform.sizeDelta = new Vector2(info.SlotsX * 120, info.SlotsY * 120);
 
-        spriteRectTransform.sizeDelta = new Vector2(info.sprite[0].rect.width, info.sprite[0].rect.height);
+        spriteRectTransform.sizeDelta = new Vector2(info.sprite[estado].rect.width, info.sprite[estado].rect.height);
         spriteRectTransform.localScale = new Vector3(info.inventoryScale, info.inventoryScale);
 
 
@@ -58,14 +103,7 @@ public class ItemInventory : MonoBehaviour
                 PosicionInicial = rectTransform.anchoredPosition;
                 distanciaAlCentro = rectTransform.anchoredPosition - mousePos;
             }
-
-            if (info.municionMaxima > 0)
-            {
-                AmmoIndicator.text = Munición + "/" + info.municionMaxima;
-            }
-            else AmmoIndicator.text = "";
         }
-        else AmmoIndicator.text = "";
 
         if (AgarrandoItem && Input.GetKey(KeyCode.Mouse0))
         {
@@ -77,17 +115,17 @@ public class ItemInventory : MonoBehaviour
             {
                 for (int j = 0; j < inventoryManager.slots.GetLength(1); j++)
                 {
-                    if (Vector3.Distance(inventoryManager.slots[i, j].transform.position, transform.position) < DistanciaMasCercana)
+                    if(Vector3.Distance(inventoryManager.slots[i,j].transform.position,transform.position) < DistanciaMasCercana)
                     {
                         DistanciaMasCercana = Vector3.Distance(inventoryManager.slots[i, j].transform.position, transform.position);
                         coordsMasCercanas = new Vector2(i, j);
-                    }
+                    } 
                 }
             }
 
             if (inventoryManager.ConfirmarUnaPosicion(Mathf.RoundToInt(coordsMasCercanas.x), Mathf.RoundToInt(coordsMasCercanas.y), info.SlotsX, info.SlotsY))
             {
-                NuevaPosiblePosicion = inventoryManager.slots[Mathf.RoundToInt(coordsMasCercanas.x), Mathf.RoundToInt(coordsMasCercanas.y)].GetComponent<RectTransform>().anchoredPosition + new Vector2(-1, 1);
+                NuevaPosiblePosicion = inventoryManager.slots[Mathf.RoundToInt(coordsMasCercanas.x), Mathf.RoundToInt(coordsMasCercanas.y)].GetComponent<RectTransform>().anchoredPosition + new Vector2(-1,1);
             }
             else NuevaPosiblePosicion = PosicionInicial;
         }

@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlotsX: 5
   SlotsY: 2
+  municionMaxima: 0
   inventoryScale: 7
-  sprite: {fileID: 21300000, guid: df6ee4e269544ae4192e278daea39529, type: 3}
+  sprite:
+  - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  arma: 0
+  infoArma: {fileID: 11400000, guid: acac856f61d0ed040a2bdfab30f65769, type: 2}

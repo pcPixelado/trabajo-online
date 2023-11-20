@@ -10,19 +10,22 @@ public class ItemGround : MonoBehaviour
     public GameObject indicador;
     private InventoryManager inventoryManager;
     private bool OnTrigger;
+
+    public int Municion;
+    public bool cartuchoEquipado;
     private void Awake()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("InventoryManager").GetComponent<InventoryManager>();
     }
     void Update()
     {
-        spriteRenderer.sprite = info.sprite;
+        spriteRenderer.sprite = info.sprite[0];
 
         if (OnTrigger)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                inventoryManager.NewItemOnInventory(info);
+                inventoryManager.NewItemOnInventory(info, Municion, cartuchoEquipado);
                 Destroy(gameObject);
             }
         }

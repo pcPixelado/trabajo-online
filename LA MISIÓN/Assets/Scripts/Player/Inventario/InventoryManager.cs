@@ -15,10 +15,11 @@ public class InventoryManager : MonoBehaviour
 
     [HideInInspector]public bool inventarioAbierto = false;
 
-    public Armas[] armasEquipadas;
+    public GameObject[] armasEquipadas;
 
     public PlayerController playerController;
 
+    public GameObject[] SlotsDeArmas;
     private void Awake()
     {
         slots = new GameObject[slotsX, slotsY];
@@ -34,19 +35,65 @@ public class InventoryManager : MonoBehaviour
                 slots[j, i].GetComponent<Slot>().SlotQueSoy = i * slotsX + j;
             }
         }
+
+        CerrarInventario();
     }
 
-    public void recargarSlotsOcupados()
+    private void CerrarInventario()
+    {
+        transform.GetChild(0).GetComponent<Image>().enabled = false;
+        transform.GetChild(1).GetComponent<Image>().enabled = false;
+        transform.GetChild(2).gameObject.SetActive(false);
+
+        for (int i = 0; i < itemsDentroDelinventario.Length; i++)
+        {
+            itemsDentroDelinventario[i].GetComponent<Image>().enabled = false;
+            itemsDentroDelinventario[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+        }
+
+        inventarioAbierto = false;
+    }
+
+    private void AbrirInventario()
+    {
+        transform.GetChild(0).GetComponent<Image>().enabled = true;
+        transform.GetChild(1).GetComponent<Image>().enabled = true;
+        transform.GetChild(2).gameObject.SetActive(true);
+        inventarioAbierto = true;
+
+        for (int i = 0; i < itemsDentroDelinventario.Length; i++)
+        {
+            itemsDentroDelinventario[i].GetComponent<Image>().enabled = true;
+            itemsDentroDelinventario[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+        }
+
+        RecargarSlotsOcupados();
+    }
+
+    public void RecargarSlotsOcupados()
     {
         for (int i = 0; i < slotsY; i++)
         {
             for (int j = 0; j < slotsX; j++)
             {
-                slots[j, i].GetComponent<Slot>().clear();
+                slots[j, i].GetComponent<Slot>().Clear();
 
                 for (int k = 0; k < itemsDentroDelinventario.Length; k++)
                 {
-                    slots[j, i].GetComponent<Slot>().DetectarSiOcupado(itemsDentroDelinventario[k].GetComponent<RectTransform>());
+                    if(itemsDentroDelinventario[k].GetComponent<ArmasInventory>() != null)
+                    {
+                        if (!itemsDentroDelinventario[k].GetComponent<ArmasInventory>().AgarrandoItem)
+                        {
+                            slots[j, i].GetComponent<Slot>().DetectarSiOcupado(itemsDentroDelinventario[k].GetComponent<RectTransform>());
+                        }
+                    }
+                    else
+                    {
+                        if (!itemsDentroDelinventario[k].GetComponent<ItemInventory>().AgarrandoItem)
+                        {
+                            slots[j, i].GetComponent<Slot>().DetectarSiOcupado(itemsDentroDelinventario[k].GetComponent<RectTransform>());
+                        }
+                    }    
                 }
 
                 slotsOcupados[j, i] = slots[j, i].GetComponent<Slot>().Ocupado;
@@ -60,68 +107,77 @@ public class InventoryManager : MonoBehaviour
 
         if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
-            transform.GetChild(0).GetComponent<Image>().enabled = false;
-            transform.GetChild(1).GetComponent<Image>().enabled = false;
-            transform.GetChild(2).gameObject.SetActive(false);
-
-            for (int i = 0; i < itemsDentroDelinventario.Length; i++)
-            {
-                itemsDentroDelinventario[i].GetComponent<Image>().enabled = false;
-                itemsDentroDelinventario[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
-            }
-
-            inventarioAbierto = false;
+            CerrarInventario();
         }
         else if (!inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
         {
-            transform.GetChild(0).GetComponent<Image>().enabled = true;
-            transform.GetChild(1).GetComponent<Image>().enabled = true;
-            transform.GetChild(2).gameObject.SetActive(true);
-            inventarioAbierto = true;
-
-            for (int i = 0; i < itemsDentroDelinventario.Length; i++)
-            {
-                itemsDentroDelinventario[i].GetComponent<Image>().enabled = true;
-                itemsDentroDelinventario[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
-            }
-
-            recargarSlotsOcupados();
+            AbrirInventario();
         }
+
+        for (int i = 0; i < armasEquipadas.Length; i++)
+        {
+            if (armasEquipadas[i] == null)
+            {
+                SlotsDeArmas[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            }
+            else
+            {
+                SlotsDeArmas[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+                SlotsDeArmas[i].transform.GetChild(0).GetComponent<Image>().sprite = armasEquipadas[i].transform.GetChild(0).GetComponent<Image>().sprite;
+                SlotsDeArmas[i].transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = armasEquipadas[i].transform.GetChild(0).GetComponent<RectTransform>().sizeDelta;
+            }
+        }
+
+
+        
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            playerController.armaEquipada = armasEquipadas[0];
+            if(armasEquipadas[0] != null) playerController.gameObjectArmaEquipada = armasEquipadas[0];
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            playerController.armaEquipada = armasEquipadas[1];
+            if (armasEquipadas[1] != null) playerController.gameObjectArmaEquipada = armasEquipadas[1];
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            playerController.armaEquipada = armasEquipadas[2];
+            if (armasEquipadas[2] != null) playerController.gameObjectArmaEquipada = armasEquipadas[2];
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            playerController.armaEquipada = armasEquipadas[3];
+            if (armasEquipadas[3] != null) playerController.gameObjectArmaEquipada = armasEquipadas[3];
         }
     }
 
     public void BtnPressed(int Btn)
     {
         print(Btn);
-        recargarSlotsOcupados();
+        RecargarSlotsOcupados();
     }
 
-    public GameObject item;
+    public GameObject item, arma;
 
     public Transform ObjetosEnElInventario;
 
     public void NewItemOnInventory(ItemInfo info)
     {
+        NewItemOnInventory(info, 0, false);
+    }
+    public void NewItemOnInventory(ItemInfo info, bool armaConCartucho)
+    {
+        NewItemOnInventory(info, 0, armaConCartucho);
+    }
+    public void NewItemOnInventory(ItemInfo info, int municionDelItem)
+    {
+        NewItemOnInventory(info, municionDelItem, false);
+    }
+
+    public void NewItemOnInventory(ItemInfo info, int municionDelItem, bool armaConCartucho)
+    {
         int ancho = info.SlotsX - 1;
         int alto = info.SlotsY - 1;
 
-        recargarSlotsOcupados();
+        RecargarSlotsOcupados();
 
         PosicionLibre posicionLibre = EncontrarPosicionLibre(slotsOcupados, ancho, alto);
 
@@ -132,9 +188,25 @@ public class InventoryManager : MonoBehaviour
             float posicionObjetivoX = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.x;
             float posicionObjetivoY = slots[posicionLibre.Fila, posicionLibre.Columna].transform.position.y;
 
-            GameObject newItem = Instantiate(item, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
+            GameObject newItem;
 
-            newItem.GetComponent<ItemInventory>().info = info;
+            if (info.arma)
+            {
+                newItem = Instantiate(arma, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
+
+                newItem.GetComponent<ArmasInventory>().info = info;
+                newItem.GetComponent<ArmasInventory>().inventoryManager = this;
+                newItem.GetComponent<ArmasInventory>().CartuchoEquipado = armaConCartucho;
+                if (armaConCartucho) newItem.GetComponent<ArmasInventory>().MunicionEnElCartucho = municionDelItem;
+            }
+            else
+            {
+                newItem = Instantiate(item, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
+
+                newItem.GetComponent<ItemInventory>().info = info;
+                newItem.GetComponent<ItemInventory>().inventoryManager = this;
+                newItem.GetComponent<ItemInventory>().Munición = municionDelItem;
+            }
 
             if (inventarioAbierto)
             {
@@ -153,7 +225,7 @@ public class InventoryManager : MonoBehaviour
             print("No se encontró espacio libre para el objeto.");
         }
 
-        recargarSlotsOcupados();
+        RecargarSlotsOcupados();
 
     }
     // Función para encontrar la primera posición libre para un objeto en la matriz
@@ -181,7 +253,6 @@ public class InventoryManager : MonoBehaviour
                     if (!espacioLibre) break;
                 }
 
-
                 print(matriz[fila,columna] + " + " + columnas + " y " + filas);
 
                 // Si encontramos espacio libre, devuelve la posición
@@ -194,6 +265,41 @@ public class InventoryManager : MonoBehaviour
 
         // Si no se encontró espacio libre
         return null;
+    }
+
+    public bool ConfirmarUnaPosicion(int fila, int columna, int anchoObjeto, int altoObjeto)
+    {
+        RecargarSlotsOcupados();
+
+        if (columna < slotsOcupados.GetLength(1) - altoObjeto && fila < slotsOcupados.GetLength(0) - anchoObjeto)
+        {
+            bool espacioLibre = true;
+            for (int i = fila; i <= fila + anchoObjeto; i++)
+            {
+                for (int j = columna; j <= columna + altoObjeto; j++)
+                {
+                    if (slotsOcupados[i, j] == true)
+                    {
+                        espacioLibre = false;
+                        break;
+                    }
+
+                }
+                if (!espacioLibre) break;
+            }
+            return espacioLibre;
+        }
+        return false;
+    }
+
+    public void EquiparArma(GameObject armaAEquipar)
+    {
+        EquiparArma(armaAEquipar, 0);
+    }
+
+    public void EquiparArma(GameObject armaAEquipar, int slot)
+    {
+        armasEquipadas[slot] = armaAEquipar;
     }
 }
 

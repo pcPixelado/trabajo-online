@@ -186,6 +186,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6765076222003018741}
   info: {fileID: 11400000, guid: e4891727486f47047bfefd6d1cf9cac4, type: 2}
   indicador: {fileID: 6555133811206129084}
+  Municion: 0
+  cartuchoEquipado: 0
 --- !u!58 &3038969254122385676
 CircleCollider2D:
   m_ObjectHideFlags: 0

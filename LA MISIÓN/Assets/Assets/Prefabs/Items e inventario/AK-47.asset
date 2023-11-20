@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73fd4a18560e4c94fb3d164603209312, type: 3}
-  m_Name: Minigun
+  m_Name: AK-47
   m_EditorClassIdentifier: 
   CadenciaDeTiro: 0.1
-  VelocidadDeLasBalas: 200
+  VelocidadDeLasBalas: 300
   NumeroDeBalasPorDisparo: 1
-  "Dispersi\xF3n": 20
+  "Dispersi\xF3n": 6
   AlcanceSegundos: 1
-  mirillaDeApuntado: 2
+  mirillaDeApuntado: 2.5
+  TiempoDeRecarga: 3
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
   sprite: {fileID: 0}
   Automatica: 1

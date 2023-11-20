@@ -31,12 +31,12 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        destination = transform.position;
     }
 
     void Update()
     {
-
-
 
 
         if (JugadorEnElCampoDeVisión)
@@ -44,10 +44,6 @@ public class EnemyController : MonoBehaviour
             destination = player.transform.position;
             
         }
-
-
-
-
 
 
 
@@ -76,7 +72,7 @@ public class EnemyController : MonoBehaviour
         Vector3 playerDirection = player.transform.position - transform.position;
         float rayCastAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
 
-        lanzarRaycast(rayCastAngle);
+        LanzarRaycast(rayCastAngle);
     }
 
     void Shoot()
@@ -89,7 +85,7 @@ public class EnemyController : MonoBehaviour
         Destroy(bullet, armaEquipada.AlcanceSegundos);
     }
 
-    void lanzarRaycast(float angulo)
+    void LanzarRaycast(float angulo)
     {
         Vector3 direction = new Vector2(Mathf.Cos(angulo * Mathf.Deg2Rad), Mathf.Sin(angulo * Mathf.Deg2Rad));
 

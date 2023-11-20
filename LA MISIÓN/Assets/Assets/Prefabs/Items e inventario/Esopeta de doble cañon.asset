@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: "Esopeta de doble ca\xF1on"
   m_EditorClassIdentifier: 
   CadenciaDeTiro: 2
-  VelocidadDeLasBalas: 200
+  VelocidadDeLasBalas: 300
   NumeroDeBalasPorDisparo: 15
   "Dispersi\xF3n": 25
   AlcanceSegundos: 1
   mirillaDeApuntado: 2
+  TiempoDeRecarga: 1
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 491af8cc5517bcd49902c6bb1b779ea3, type: 3}
   sprite: {fileID: 0}
   Automatica: 0

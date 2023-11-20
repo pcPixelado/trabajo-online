@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3861941d1072ac04d8bb44418544dbdb, type: 3}
-  m_Name: Granada
+  m_Name: Cartucho
   m_EditorClassIdentifier: 
   SlotsX: 1
   SlotsY: 2
+  municionMaxima: 30
   inventoryScale: 6
   sprite:
-  - {fileID: 843288882, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: 1591680352, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   arma: 0
   infoArma: {fileID: 0}

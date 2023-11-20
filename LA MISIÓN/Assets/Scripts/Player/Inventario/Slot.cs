@@ -14,7 +14,7 @@ public class Slot : MonoBehaviour
         uiObjectRect = GetComponent<RectTransform>();
     }
 
-    public void clear()
+    public void Clear()
     {
         Ocupado = false;
     }
@@ -28,7 +28,7 @@ public class Slot : MonoBehaviour
         //if (Ocupado) print(Ocupado + " es " + gameObject);
     }
 
-    public void itemSelected()
+    public void ItemSelected()
     {
         inventoryManager.BtnPressed(SlotQueSoy);
     }
