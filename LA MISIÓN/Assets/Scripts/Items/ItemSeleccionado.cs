@@ -15,10 +15,11 @@ public class ItemSeleccionado : MonoBehaviour
     }
     void Update()
     {
-        Rect uiObjectLocalRect = new Rect(rectTransform.position.x - rectTransform.rect.width/2, rectTransform.position.y - rectTransform.rect.height, rectTransform.rect.width, rectTransform.rect.height);
+        Rect uiObjectLocalRect = new Rect(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y, rectTransform.rect.width, rectTransform.rect.height);
 
+        Vector2 mousePos = (Input.mousePosition / Camera.main.scaledPixelWidth * 1600) - new Vector3(600, 750);
 
-        if (!uiObjectLocalRect.Contains(Input.mousePosition))
+        if (!uiObjectLocalRect.Contains(mousePos))
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

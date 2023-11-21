@@ -47,7 +47,7 @@ public class ItemInventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                clickDerecho.transform.position = mousePos;
+                clickDerecho.transform.position = Input.mousePosition;
 
                 clickDerecho.GetComponent<ItemSeleccionado>().objetoSeleccionado = gameObject;
             }

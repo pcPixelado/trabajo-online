@@ -271,12 +271,12 @@ public class InventoryManager : MonoBehaviour
     {
         RecargarSlotsOcupados();
 
-        if (columna < slotsOcupados.GetLength(1) - altoObjeto && fila < slotsOcupados.GetLength(0) - anchoObjeto)
+        if (columna < slotsOcupados.GetLength(1) - altoObjeto + 1 && fila < slotsOcupados.GetLength(0) - anchoObjeto + 1)
         {
             bool espacioLibre = true;
-            for (int i = fila; i <= fila + anchoObjeto; i++)
+            for (int i = fila; i <= fila + anchoObjeto-1; i++)
             {
-                for (int j = columna; j <= columna + altoObjeto; j++)
+                for (int j = columna; j <= columna + altoObjeto -1; j++)
                 {
                     if (slotsOcupados[i, j] == true)
                     {
