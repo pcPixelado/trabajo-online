@@ -15,7 +15,7 @@ MonoBehaviour:
   CadenciaDeTiro: 0.1
   VelocidadDeLasBalas: 300
   NumeroDeBalasPorDisparo: 1
-  "Dispersi\xF3n": 6
+  "Dispersi\xF3n": 5
   AlcanceSegundos: 1
   mirillaDeApuntado: 2.5
   TiempoDeRecarga: 3

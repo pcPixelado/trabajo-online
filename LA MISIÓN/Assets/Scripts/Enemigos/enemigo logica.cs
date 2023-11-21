@@ -55,7 +55,6 @@ public class EnemyController : MonoBehaviour
             if (Firetime > armaEquipada.CadenciaDeTiro)
             {
                 Shoot();
-                Firetime = 0;
             }
             else Firetime += Time.deltaTime;
 
@@ -75,14 +74,31 @@ public class EnemyController : MonoBehaviour
         LanzarRaycast(rayCastAngle);
     }
 
+    private int municionEnElCartucho = 10;
+
     void Shoot()
     {
-        GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, transform.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = firePoint.up * armaEquipada.VelocidadDeLasBalas;
+        if (municionEnElCartucho > 0)
+        {
+            municionEnElCartucho--;
+            Firetime = 0;
+            for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
+            {
+                GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-armaEquipada.Dispersión * 2, armaEquipada.Dispersión * 2)));
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
 
-        // Destruye la bala después de 2 segundos.
-        Destroy(bullet, armaEquipada.AlcanceSegundos);
+                // Destruye la bala después de 1 segundos.
+                Destroy(bullet, armaEquipada.AlcanceSegundos); // 1f representa 1 segundos.
+            }
+
+        }
+        else
+        {
+            Firetime = -armaEquipada.TiempoDeRecarga;
+            municionEnElCartucho = 20;
+        }
+
     }
 
     void LanzarRaycast(float angulo)

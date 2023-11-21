@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30bb312cf7b2484b8cc68b0e58d31b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armaEquipada: {fileID: 11400000, guid: 9648a86ba3bd22548b3f61acbdf89170, type: 2}
+  armaEquipada: {fileID: 11400000, guid: 16115faad71f53e41b765a39e7c26d67, type: 2}
   firePoint: {fileID: 958489068953975758}
   Firetime: 0
   RangoDeVision: 100

@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public InventoryManager inventoryManager;
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            timer = -armaEquipada.TiempoDeRecarga;
+        }
         if (gameObjectArmaEquipada != null)
         {
             armaEquipada = gameObjectArmaEquipada.GetComponent<ArmasInventory>().info.infoArma;
@@ -69,7 +73,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            timer = -armaEquipada.TiempoDeRecarga;
             print("recargar");
         }
 
