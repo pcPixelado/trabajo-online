@@ -230,6 +230,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 0}
   "Munici\xF3n": 0
   AmmoIndicator: {fileID: 3059275991822288360}
+  AgarrandoItem: 0
 --- !u!1 &3399192967322520053
 GameObject:
   m_ObjectHideFlags: 0

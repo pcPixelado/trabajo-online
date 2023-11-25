@@ -4444,6 +4444,10 @@ PrefabInstance:
       propertyPath: "Munici\xF3n"
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 950681896722476611}
     - target: {fileID: 2416148778533520269, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
       propertyPath: m_Name
       value: ObjetoEnElInventario
