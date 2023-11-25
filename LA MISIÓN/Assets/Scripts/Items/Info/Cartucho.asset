@@ -18,5 +18,6 @@ MonoBehaviour:
   inventoryScale: 6
   sprite:
   - {fileID: 1591680352, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
-  arma: 0
+  ItemID: 2
+  CalibreDelArma: 0
   infoArma: {fileID: 0}

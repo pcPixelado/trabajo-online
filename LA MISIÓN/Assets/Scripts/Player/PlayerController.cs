@@ -13,8 +13,19 @@ public class PlayerController : MonoBehaviour
     public float timer;
 
     public InventoryManager inventoryManager;
+
+    public PlayerMovement playerMovement;
+    private float dispersónPorMovimiento;
     void Update()
     {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            dispersónPorMovimiento = (playerMovement.currentSpeed / 11) - 4;
+        }
+        else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
+
+
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             timer = -armaEquipada.TiempoDeRecarga;
@@ -63,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
             for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
             {
-                GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-armaEquipada.Dispersión * 2, armaEquipada.Dispersión * 2)));
+                GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-(armaEquipada.Dispersión + dispersónPorMovimiento) * 2, (armaEquipada.Dispersión + dispersónPorMovimiento) * 2)));
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
 

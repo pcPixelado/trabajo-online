@@ -92,9 +92,13 @@ MonoBehaviour:
   image: {fileID: 8421051008959984018}
   info: {fileID: 11400000, guid: 34e6451b4f70d8649975a841af5f6353, type: 2}
   clickDerecho: {fileID: 0}
+  inventoryManager: {fileID: 0}
   Mejoras: 0
   CartuchoEquipado: 0
   MunicionEnElCartucho: 0
+  calibreDelArma: 2
+  cartucho: {fileID: 0}
+  AgarrandoItem: 0
 --- !u!1 &3399192967322520053
 GameObject:
   m_ObjectHideFlags: 0

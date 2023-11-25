@@ -14,7 +14,7 @@ public class ItemInventory : MonoBehaviour
     public GameObject clickDerecho;
     public InventoryManager inventoryManager;
 
-    public int Munición;
+    public int Munición, ItemID; //0 = Arma, 1 = Botiquin, 2-5 = calibres del arma, 
 
     public TMP_Text AmmoIndicator;
 
@@ -94,6 +94,39 @@ public class ItemInventory : MonoBehaviour
         }
         else if (AgarrandoItem && Input.GetKeyUp(KeyCode.Mouse0))
         {
+            //Soltar un item dentro de otro
+            for (int i = 0; i < inventoryManager.itemsDentroDelinventario.Length; i++)
+            {
+                RectTransform itemDelInventarioRT = inventoryManager.itemsDentroDelinventario[i].GetComponent<RectTransform>();
+                Rect itemDelInventarioLocalRect = new Rect(itemDelInventarioRT.anchoredPosition.x, itemDelInventarioRT.anchoredPosition.y - itemDelInventarioRT.rect.height + 780, itemDelInventarioRT.rect.width, itemDelInventarioRT.rect.height);
+                if (itemDelInventarioLocalRect.Contains(uiObjectLocalRect.center))
+                {
+                    if (itemDelInventarioRT.gameObject != gameObject)
+                    {
+                        //Todas las cosas que pasan cuando metes un item dentro de otro justo aquí!!!
+
+
+                        if (itemDelInventarioRT.gameObject.GetComponent<ArmasInventory>() != null)
+                        {
+                            ArmasInventory armaSeleccionada = itemDelInventarioRT.gameObject.GetComponent<ArmasInventory>();
+                            if (armaSeleccionada.info.CalibreDelArma == ItemID)
+                            {
+                                if (!armaSeleccionada.CartuchoEquipado)
+                                {
+                                    armaSeleccionada.MeterCartucho(gameObject);
+                                }
+                                else if (armaSeleccionada.CartuchoEquipado)
+                                {
+                                    armaSeleccionada.CambioDeCartucho(gameObject);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //sacar la respuesta
+
+
             AgarrandoItem = false;
 
             rectTransform.anchoredPosition = NuevaPosiblePosicion;

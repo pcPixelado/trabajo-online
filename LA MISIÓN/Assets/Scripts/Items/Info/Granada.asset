@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlotsX: 1
   SlotsY: 2
+  municionMaxima: 0
   inventoryScale: 6
   sprite:
   - {fileID: 843288882, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
-  arma: 0
+  ItemID: 1
+  CalibreDelArma: 0
   infoArma: {fileID: 0}

@@ -25,5 +25,6 @@ MonoBehaviour:
   - {fileID: 1376813799, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: 1778767714, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -189865361, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
-  arma: 1
+  ItemID: 0
+  CalibreDelArma: 2
   infoArma: {fileID: 11400000, guid: 16115faad71f53e41b765a39e7c26d67, type: 2}

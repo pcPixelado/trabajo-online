@@ -8,7 +8,7 @@ public class ItemInfo : ScriptableObject
     public int SlotsX, SlotsY, municionMaxima;
     public float inventoryScale;
     public Sprite[] sprite;
-    public bool arma;
+    public int ItemID, CalibreDelArma;
 
     public Armas infoArma;
 }

@@ -134,18 +134,46 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if(armasEquipadas[0] != null) playerController.gameObjectArmaEquipada = armasEquipadas[0];
+            for (int i = 0;i < armasEquipadas.Length; i++)
+            {
+                if (armasEquipadas[i] == null) return;
+
+                if (i == 0)armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
+                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (armasEquipadas[1] != null) playerController.gameObjectArmaEquipada = armasEquipadas[1];
+            for (int i = 0; i < armasEquipadas.Length; i++)
+            {
+                if (armasEquipadas[i] == null) return;
+
+                if (i == 1) armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
+                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (armasEquipadas[2] != null) playerController.gameObjectArmaEquipada = armasEquipadas[2];
+            for (int i = 0; i < armasEquipadas.Length; i++)
+            {
+                if (armasEquipadas[i] == null) return;
+
+                if (i == 2) armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
+                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (armasEquipadas[3] != null) playerController.gameObjectArmaEquipada = armasEquipadas[3];
+            for (int i = 0; i < armasEquipadas.Length; i++)
+            {
+                if (armasEquipadas[i] == null) return;
+
+                if (i == 3) armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
+                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+            }
         }
     }
 
@@ -190,7 +218,7 @@ public class InventoryManager : MonoBehaviour
 
             GameObject newItem;
 
-            if (info.arma)
+            if (info.ItemID == 0)
             {
                 newItem = Instantiate(arma, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
 
@@ -206,6 +234,8 @@ public class InventoryManager : MonoBehaviour
                 newItem.GetComponent<ItemInventory>().info = info;
                 newItem.GetComponent<ItemInventory>().inventoryManager = this;
                 newItem.GetComponent<ItemInventory>().Munición = municionDelItem;
+
+                newItem.GetComponent<ItemInventory>().ItemID = info.ItemID;
             }
 
             if (inventarioAbierto)

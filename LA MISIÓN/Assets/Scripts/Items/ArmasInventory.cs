@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class ArmasInventory : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class ArmasInventory : MonoBehaviour
     public GameObject clickDerecho;
     public InventoryManager inventoryManager;
 
+    private GameObject[] slotsDeArmas;
+
     public int Mejoras;
 
-    public bool CartuchoEquipado;
+    public bool CartuchoEquipado, ArmaEquìpada = false;
     public int MunicionEnElCartucho;
 
     public ItemInfo cartucho;
@@ -24,12 +27,19 @@ public class ArmasInventory : MonoBehaviour
         clickDerecho = GameObject.FindGameObjectWithTag("ClickDerecho");
 
         spriteRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
+
+        slotsDeArmas = inventoryManager.SlotsDeArmas;
     }
 
     public void CambioDeCartucho()
     {
         SacarCartucho();
         MeterCartucho();
+    }
+    public void CambioDeCartucho(GameObject cartuchoAcambiar)
+    {
+        SacarCartucho();
+        MeterCartucho(cartuchoAcambiar);
     }
 
     public void SacarCartucho()
@@ -48,25 +58,35 @@ public class ArmasInventory : MonoBehaviour
         {
             if (inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>() != null)
             {
-                MunicionEnElCartucho = inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>().Munición;
-                cartucho = inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>().info;
-                Destroy(inventoryManager.itemsDentroDelinventario[i]);
-                CartuchoEquipado = true;
-                break;
+                if (inventoryManager.itemsDentroDelinventario[i].GetComponent<ItemInventory>().ItemID == info.CalibreDelArma)
+                {
+                    MeterCartucho(inventoryManager.itemsDentroDelinventario[i]);
+                    break;
+                }
             }
         }
+    }
+    public void MeterCartucho(GameObject cartuchoParaAdentro)
+    {
+        MunicionEnElCartucho = cartuchoParaAdentro.GetComponent<ItemInventory>().Munición;
+        cartucho = cartuchoParaAdentro.GetComponent<ItemInventory>().info;
+        Destroy(cartuchoParaAdentro);
+        CartuchoEquipado = true;
     }
     public bool AgarrandoItem;
     private Vector2 PosicionInicial, distanciaAlCentro, NuevaPosiblePosicion;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !CartuchoEquipado)
+        if (ArmaEquìpada)
         {
-            MeterCartucho();
-        }
-        else if (Input.GetKeyDown(KeyCode.R) && CartuchoEquipado)
-        {
-            CambioDeCartucho();
+            if (Input.GetKeyDown(KeyCode.R) && !CartuchoEquipado)
+            {
+                MeterCartucho();
+            }
+            else if (Input.GetKeyDown(KeyCode.R) && CartuchoEquipado)
+            {
+                CambioDeCartucho();
+            }
         }
 
         int estado;
@@ -131,6 +151,21 @@ public class ArmasInventory : MonoBehaviour
         }
         else if (AgarrandoItem && Input.GetKeyUp(KeyCode.Mouse0))
         {
+            //Soltar un item dentro de otro
+            for (int i = 0; i < slotsDeArmas.Length; i++)
+            {
+                RectTransform SlotDeArmasRT = slotsDeArmas[i].GetComponent<RectTransform>();
+                Rect itemDelInventarioLocalRect = new Rect(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y - SlotDeArmasRT.rect.height + 780, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
+                if (itemDelInventarioLocalRect.Contains(uiObjectLocalRect.center))
+                {
+                    if (SlotDeArmasRT.GetComponent<SlotDeArma>() != null)
+                    {
+                        inventoryManager.EquiparArma(gameObject, SlotDeArmasRT.GetComponent<SlotDeArma>().SlotNumber);
+                    }
+                }
+            }
+            //sacar la respuesta
+
             AgarrandoItem = false;
 
             rectTransform.anchoredPosition = NuevaPosiblePosicion;

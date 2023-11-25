@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public float vida, vidaRestante, walkSpeed = 11f;
     public float runSpeed = 25f; // Velocidad de carrera
     public Rigidbody2D rig;
-    private bool isRunning = false; // Variable para rastrear si el jugador está corriendo
+    public bool isRunning = false; // Variable para rastrear si el jugador está corriendo
     public Image BarraDeVida;
 
+    public float currentSpeed;
     private void Start()
     {
         vidaRestante = vida;
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Calcular la velocidad en función de si el jugador está corriendo o caminando
-        float currentSpeed = isRunning ? runSpeed : walkSpeed;
+        currentSpeed = isRunning ? runSpeed : walkSpeed;
 
         // Mover al personaje
 
