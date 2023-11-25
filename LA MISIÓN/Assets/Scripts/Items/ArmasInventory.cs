@@ -154,10 +154,14 @@ public class ArmasInventory : MonoBehaviour
             //Soltar un item dentro de otro
             for (int i = 0; i < slotsDeArmas.Length; i++)
             {
+                Vector2 mousePos2 = (Input.mousePosition / Camera.main.scaledPixelWidth * 1600) - new Vector3(31, 60);
+
                 RectTransform SlotDeArmasRT = slotsDeArmas[i].GetComponent<RectTransform>();
-                Rect itemDelInventarioLocalRect = new Rect(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y - SlotDeArmasRT.rect.height + 780, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
-                if (itemDelInventarioLocalRect.Contains(uiObjectLocalRect.center))
+                Rect SlotDeArmasLocalRect = new Rect(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
+
+                if (SlotDeArmasLocalRect.Contains(mousePos2))
                 {
+                    print("CasiEquipada");
                     if (SlotDeArmasRT.GetComponent<SlotDeArma>() != null)
                     {
                         inventoryManager.EquiparArma(gameObject, SlotDeArmasRT.GetComponent<SlotDeArma>().SlotNumber);
