@@ -12,7 +12,7 @@ public class ArmasInventory : MonoBehaviour
     public GameObject clickDerecho;
     public InventoryManager inventoryManager;
 
-    private GameObject[] slotsDeArmas;
+    [HideInInspector]public GameObject[] slotsDeArmas;
 
     public int Mejoras;
 
@@ -27,8 +27,6 @@ public class ArmasInventory : MonoBehaviour
         clickDerecho = GameObject.FindGameObjectWithTag("ClickDerecho");
 
         spriteRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
-
-        slotsDeArmas = inventoryManager.SlotsDeArmas;
     }
 
     public void CambioDeCartucho()

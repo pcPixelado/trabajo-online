@@ -222,17 +222,19 @@ public class InventoryManager : MonoBehaviour
             {
                 newItem = Instantiate(arma, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
 
-                newItem.GetComponent<ArmasInventory>().info = info;
                 newItem.GetComponent<ArmasInventory>().inventoryManager = this;
+                newItem.GetComponent<ArmasInventory>().info = info;
                 newItem.GetComponent<ArmasInventory>().CartuchoEquipado = armaConCartucho;
+                newItem.GetComponent<ArmasInventory>().slotsDeArmas = SlotsDeArmas;
+
                 if (armaConCartucho) newItem.GetComponent<ArmasInventory>().MunicionEnElCartucho = municionDelItem;
             }
             else
             {
                 newItem = Instantiate(item, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
 
-                newItem.GetComponent<ItemInventory>().info = info;
                 newItem.GetComponent<ItemInventory>().inventoryManager = this;
+                newItem.GetComponent<ItemInventory>().info = info;
                 newItem.GetComponent<ItemInventory>().Munición = municionDelItem;
 
                 newItem.GetComponent<ItemInventory>().ItemID = info.ItemID;

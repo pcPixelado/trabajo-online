@@ -7,5 +7,7 @@ public class Puntero : MonoBehaviour
     void Update()
     {
         transform.position = Input.mousePosition;
+
+        //print(Input.GetKey());
     }
 }
