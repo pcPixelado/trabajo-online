@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    //public Transform Mouse;
+
     public GameObject[,] slots;
     public bool[,] slotsOcupados;
 
     public GameObject[] slotsDetected, itemsDentroDelinventario;
 
-    public int slotsX, slotsY;
+    [HideInInspector]public int slotsX = 9, slotsY = 6;
 
     [HideInInspector]public bool inventarioAbierto = false;
 
