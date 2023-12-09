@@ -425,10 +425,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6038347990777652765}
   - {fileID: 1497584631960563616}
   - {fileID: 4540825688227304160}
   - {fileID: 7430595473883829343}
+  - {fileID: 6038347990777652765}
   m_Father: {fileID: 8033307803772749886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1926,6 +1926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbee9cf7ecf57844b18a4ec40fdc76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MandoConectado: 0
+  InventoryManager: {fileID: 950681896722476611}
 --- !u!1 &6640487521907666236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,7 +2841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e569452ee0be94e9f8abfcde373a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puntero: {fileID: 0}
+  Puntero: {fileID: 6038347990777652765}
   objetoSeleccionado: {fileID: 0}
   objetoEnElSuelo: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
   inventoryManager: {fileID: 950681896722476611}

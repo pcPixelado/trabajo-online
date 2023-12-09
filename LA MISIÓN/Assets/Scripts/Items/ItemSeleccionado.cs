@@ -23,7 +23,7 @@ public class ItemSeleccionado : MonoBehaviour
 
         if (!uiObjectLocalRect.Contains(mousePos))
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetButtonDown("xBtn"))
             {
                 transform.position = new Vector3(-100, -10);
             }

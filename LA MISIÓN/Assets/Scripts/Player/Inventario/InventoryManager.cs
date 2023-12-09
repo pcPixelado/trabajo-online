@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
@@ -107,14 +108,29 @@ public class InventoryManager : MonoBehaviour
     {
         itemsDentroDelinventario = GameObject.FindGameObjectsWithTag("Item");
 
-        if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
+        if (Gamepad.all.Count > 0)
         {
-            CerrarInventario();
+            if (inventarioAbierto && Input.GetButtonDown("Touchpad"))
+            {
+                CerrarInventario();
+            }
+            else if (!inventarioAbierto && Input.GetButtonDown("Touchpad"))
+            {
+                AbrirInventario();
+            }
         }
-        else if (!inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
+        else
         {
-            AbrirInventario();
+            if (inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
+            {
+                CerrarInventario();
+            }
+            else if (!inventarioAbierto && Input.GetKeyDown(KeyCode.Tab))
+            {
+                AbrirInventario();
+            }
         }
+
 
         for (int i = 0; i < armasEquipadas.Length; i++)
         {
@@ -130,10 +146,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-
-        
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("Vertical7Axis") > 0)
         {
             if(armasEquipadas[0] != null) playerController.gameObjectArmaEquipada = armasEquipadas[0];
             for (int i = 0;i < armasEquipadas.Length; i++)
@@ -144,7 +157,7 @@ public class InventoryManager : MonoBehaviour
                 else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("Horizontal6Axis") < 0)
         {
             if (armasEquipadas[1] != null) playerController.gameObjectArmaEquipada = armasEquipadas[1];
             for (int i = 0; i < armasEquipadas.Length; i++)
@@ -155,7 +168,7 @@ public class InventoryManager : MonoBehaviour
                 else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("Horizontal6Axis") > 0)
         {
             if (armasEquipadas[2] != null) playerController.gameObjectArmaEquipada = armasEquipadas[2];
             for (int i = 0; i < armasEquipadas.Length; i++)
@@ -166,7 +179,7 @@ public class InventoryManager : MonoBehaviour
                 else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetAxis("Vertical7Axis") < 0)
         {
             if (armasEquipadas[3] != null) playerController.gameObjectArmaEquipada = armasEquipadas[3];
             for (int i = 0; i < armasEquipadas.Length; i++)

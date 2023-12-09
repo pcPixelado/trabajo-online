@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,26 +21,45 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        // Si se presiona Shift, establecer isRunning en verdadero
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Gamepad.all.Count > 0)
         {
-            isRunning = true;
+            if (Gamepad.all[0].crossButton.value > 0)
+            {
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+            }
+
+            if (Gamepad.all[0].leftShoulder.value > 0f)
+            {
+                rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
+            }
+            else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
         }
         else
         {
-            isRunning = false;
+            // Si se presiona Shift, establecer isRunning en verdadero
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+            }
+
+            // Mover al personaje
+            if (!Input.GetKey(KeyCode.Mouse1))
+            {
+                rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
+            }
+            else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
         }
 
         // Calcular la velocidad en función de si el jugador está corriendo o caminando
         currentSpeed = isRunning ? runSpeed : walkSpeed;
-
-        // Mover al personaje
-
-        if (!Input.GetKey(KeyCode.Mouse1))
-        {
-            rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
-        }
-        else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

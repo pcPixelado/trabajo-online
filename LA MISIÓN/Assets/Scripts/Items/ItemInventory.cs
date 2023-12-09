@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +28,7 @@ public class ItemInventory : MonoBehaviour
 
         image.enabled = false;
     }
+
     public bool AgarrandoItem;
     private Vector2 PosicionInicial, distanciaAlCentro, NuevaPosiblePosicion;
     void Update()
@@ -48,14 +48,14 @@ public class ItemInventory : MonoBehaviour
 
         if (uiObjectLocalRect.Contains(mousePos) && image.enabled)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetButtonDown("uBtn"))
             {
                 clickDerecho.transform.position = Puntero.position;
 
                 clickDerecho.GetComponent<ItemSeleccionado>().objetoSeleccionado = gameObject;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetButtonDown("xBtn"))
             {
                 AgarrandoItem = true;
                 PosicionInicial = rectTransform.anchoredPosition;
@@ -70,7 +70,7 @@ public class ItemInventory : MonoBehaviour
         }
         else AmmoIndicator.text = "";
 
-        if (AgarrandoItem && Input.GetKey(KeyCode.Mouse0))
+        if (AgarrandoItem && (Input.GetKey(KeyCode.Mouse0) || Input.GetButton("xBtn")))
         {
             rectTransform.anchoredPosition = mousePos + distanciaAlCentro;
 
@@ -94,7 +94,7 @@ public class ItemInventory : MonoBehaviour
             }
             else NuevaPosiblePosicion = PosicionInicial;
         }
-        else if (AgarrandoItem && Input.GetKeyUp(KeyCode.Mouse0))
+        else if (AgarrandoItem && (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetButtonUp("xBtn")))
         {
             //Soltar un item dentro de otro
             for (int i = 0; i < inventoryManager.itemsDentroDelinventario.Length; i++)

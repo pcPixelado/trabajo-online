@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,29 +19,40 @@ public class PlayerController : MonoBehaviour
 
     public PlayerMovement playerMovement;
     private float dispersónPorMovimiento;
-    void Update()
+    void Update() // Xbutton run, RigthShoulder fire, circleButton recargar, LeftShoulder Apuntar
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Gamepad.all.Count > 0)
         {
-            dispersónPorMovimiento = (playerMovement.currentSpeed / 11) - 4;
-        }
-        else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
-
-
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            timer = -armaEquipada.TiempoDeRecarga;
-        }
-        if (gameObjectArmaEquipada != null)
-        {
-            armaEquipada = gameObjectArmaEquipada.GetComponent<ArmasInventory>().info.infoArma;
-
-            if (!inventoryManager.inventarioAbierto)
+            if (Gamepad.all[0].crossButton.value > 0)
             {
-                if (armaEquipada.Automatica)
+                dispersónPorMovimiento = (playerMovement.currentSpeed / 11) - 4;
+            }
+            else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
+
+            if (Gamepad.all[0].circleButton.value > 0)
+            {
+                timer = -armaEquipada.TiempoDeRecarga;
+            }
+
+
+            if (gameObjectArmaEquipada != null)
+            {
+                armaEquipada = gameObjectArmaEquipada.GetComponent<ArmasInventory>().info.infoArma;
+
+                if (!inventoryManager.inventarioAbierto)
                 {
-                    if (Input.GetKey(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+                    if (armaEquipada.Automatica)
+                    {
+                        if (Gamepad.all[0].rightShoulder.value > 0 && timer > armaEquipada.CadenciaDeTiro)
+                        {
+                            Shoot();
+                        }
+                        else if (timer <= armaEquipada.CadenciaDeTiro)
+                        {
+                            timer += Time.deltaTime;
+                        }
+                    }
+                    else if (Gamepad.all[0].rightShoulder.value > 0 && timer > armaEquipada.CadenciaDeTiro)
                     {
                         Shoot();
                     }
@@ -49,16 +61,53 @@ public class PlayerController : MonoBehaviour
                         timer += Time.deltaTime;
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+            }
+
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                dispersónPorMovimiento = (playerMovement.currentSpeed / 11) - 4;
+            }
+            else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                timer = -armaEquipada.TiempoDeRecarga;
+            }
+
+
+            if (gameObjectArmaEquipada != null)
+            {
+                armaEquipada = gameObjectArmaEquipada.GetComponent<ArmasInventory>().info.infoArma;
+
+                if (!inventoryManager.inventarioAbierto)
                 {
-                    Shoot();
-                }
-                else if (timer <= armaEquipada.CadenciaDeTiro)
-                {
-                    timer += Time.deltaTime;
+                    if (armaEquipada.Automatica)
+                    {
+                        if (Input.GetKey(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+                        {
+                            Shoot();
+                        }
+                        else if (timer <= armaEquipada.CadenciaDeTiro)
+                        {
+                            timer += Time.deltaTime;
+                        }
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+                    {
+                        Shoot();
+                    }
+                    else if (timer <= armaEquipada.CadenciaDeTiro)
+                    {
+                        timer += Time.deltaTime;
+                    }
                 }
             }
+
         }
+
         Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Puntero.position) - transform.position;
 
         float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
