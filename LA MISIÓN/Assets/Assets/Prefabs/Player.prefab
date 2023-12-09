@@ -427,8 +427,8 @@ RectTransform:
   m_Children:
   - {fileID: 1497584631960563616}
   - {fileID: 4540825688227304160}
-  - {fileID: 7430595473883829343}
   - {fileID: 6038347990777652765}
+  - {fileID: 7430595473883829343}
   m_Father: {fileID: 8033307803772749886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3302,6 +3302,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6038347990777652765}
     - target: {fileID: 2282528398340548273, guid: 850a03aabdbe1bc42aa1003057160441, type: 3}
+      propertyPath: clickDerecho
+      value: 
+      objectReference: {fileID: 9120529747817814999}
+    - target: {fileID: 2282528398340548273, guid: 850a03aabdbe1bc42aa1003057160441, type: 3}
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 950681896722476611}
@@ -4527,6 +4531,10 @@ PrefabInstance:
       propertyPath: "Munici\xF3n"
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
+      propertyPath: clickDerecho
+      value: 
+      objectReference: {fileID: 9120529747817814999}
     - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
       propertyPath: inventoryManager
       value: 

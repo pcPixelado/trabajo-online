@@ -23,7 +23,7 @@ public class ItemGround : MonoBehaviour
 
         if (OnTrigger)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("uBtn"))
             {
                 inventoryManager.NewItemOnInventory(info, Municion, cartuchoEquipado);
                 Destroy(gameObject);

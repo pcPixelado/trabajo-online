@@ -48,7 +48,7 @@ public class ItemInventory : MonoBehaviour
 
         if (uiObjectLocalRect.Contains(mousePos) && image.enabled)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetButtonDown("uBtn"))
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetButtonDown("oBtn"))
             {
                 clickDerecho.transform.position = Puntero.position;
 

@@ -28,6 +28,8 @@ public class ArmasInventory : MonoBehaviour
         clickDerecho = GameObject.FindGameObjectWithTag("ClickDerecho");
 
         spriteRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
+
+        slotsDeArmas = inventoryManager.SlotsDeArmas;
     }
 
     public void CambioDeCartucho()
@@ -78,11 +80,11 @@ public class ArmasInventory : MonoBehaviour
     {
         if (ArmaEquìpada)
         {
-            if (Input.GetKeyDown(KeyCode.R) && !CartuchoEquipado)
+            if ((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("uBtn")) && !CartuchoEquipado)
             {
                 MeterCartucho();
             }
-            else if (Input.GetKeyDown(KeyCode.R) && CartuchoEquipado)
+            else if ((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("uBtn")) && CartuchoEquipado)
             {
                 CambioDeCartucho();
             }
@@ -109,7 +111,7 @@ public class ArmasInventory : MonoBehaviour
 
         if (uiObjectLocalRect.Contains(mousePos) && image.enabled)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetButtonDown("uBtn"))
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetButtonDown("oBtn"))
             {
                 clickDerecho.transform.position = Puntero.position;
 
@@ -158,9 +160,10 @@ public class ArmasInventory : MonoBehaviour
                 RectTransform SlotDeArmasRT = slotsDeArmas[i].GetComponent<RectTransform>();
                 Rect SlotDeArmasLocalRect = new(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
 
+                print(SlotDeArmasLocalRect + " " + mousePos2);
+
                 if (SlotDeArmasLocalRect.Contains(mousePos2))
                 {
-                    print("CasiEquipada");
                     if (SlotDeArmasRT.GetComponent<SlotDeArma>() != null)
                     {
                         inventoryManager.EquiparArma(gameObject, SlotDeArmasRT.GetComponent<SlotDeArma>().SlotNumber);

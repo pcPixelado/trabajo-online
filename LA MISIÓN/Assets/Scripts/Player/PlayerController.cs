@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerMovement playerMovement;
     private float dispersónPorMovimiento;
-    void Update() // Xbutton run, RigthShoulder fire, circleButton recargar, LeftShoulder Apuntar
+    void Update() // Xbutton run, RigthShoulder fire, circleButton recargar, LeftShoulder Apuntar, squareButton CojerItems, Cruz Armas
     {
         if (Gamepad.all.Count > 0)
         {
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (armaEquipada.Automatica)
                     {
-                        if (Gamepad.all[0].rightShoulder.value > 0 && timer > armaEquipada.CadenciaDeTiro)
+                        if (Gamepad.all[0].rightTrigger.value > 0 && timer > armaEquipada.CadenciaDeTiro)
                         {
                             Shoot();
                         }
