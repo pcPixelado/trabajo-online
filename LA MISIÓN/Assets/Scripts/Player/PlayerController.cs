@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public RectTransform Puntero;
+
     public Transform firePoint;
 
     public Armas armaEquipada;
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else if (timer <= armaEquipada.CadenciaDeTiro)
                     {
-                        timer = timer + Time.deltaTime;
+                        timer += Time.deltaTime;
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
@@ -53,11 +55,11 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (timer <= armaEquipada.CadenciaDeTiro)
                 {
-                    timer = timer + Time.deltaTime;
+                    timer += Time.deltaTime;
                 }
             }
         }
-        Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Puntero.position) - transform.position;
 
         float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
         //print(angle);

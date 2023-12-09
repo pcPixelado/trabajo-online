@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    //public Transform Mouse;
+    public RectTransform Puntero;
 
     public GameObject[,] slots;
     public bool[,] slotsOcupados;
@@ -224,6 +224,8 @@ public class InventoryManager : MonoBehaviour
             {
                 newItem = Instantiate(arma, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
 
+                newItem.GetComponent<ArmasInventory>().Puntero = Puntero;
+
                 newItem.GetComponent<ArmasInventory>().inventoryManager = this;
                 newItem.GetComponent<ArmasInventory>().info = info;
                 newItem.GetComponent<ArmasInventory>().CartuchoEquipado = armaConCartucho;
@@ -234,6 +236,8 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 newItem = Instantiate(item, new Vector3(posicionObjetivoX - 1, posicionObjetivoY + 1), Quaternion.identity, ObjetosEnElInventario);
+
+                newItem.GetComponent<ItemInventory>().Puntero = Puntero;
 
                 newItem.GetComponent<ItemInventory>().inventoryManager = this;
                 newItem.GetComponent<ItemInventory>().info = info;

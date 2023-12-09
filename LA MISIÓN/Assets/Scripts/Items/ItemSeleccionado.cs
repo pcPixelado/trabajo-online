@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ItemSeleccionado : MonoBehaviour
 {
+    public RectTransform Puntero;
+
     public GameObject objetoSeleccionado;
     public GameObject objetoEnElSuelo;
     private RectTransform rectTransform;
@@ -15,9 +17,9 @@ public class ItemSeleccionado : MonoBehaviour
     }
     void Update()
     {
-        Rect uiObjectLocalRect = new Rect(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y, rectTransform.rect.width, rectTransform.rect.height);
+        Rect uiObjectLocalRect = new(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y, rectTransform.rect.width, rectTransform.rect.height);
 
-        Vector2 mousePos = (Input.mousePosition / Camera.main.scaledPixelWidth * 1600) - new Vector3(600, 750);
+        Vector2 mousePos = (Puntero.position / Camera.main.scaledPixelWidth * 1600) - new Vector3(600, 750);
 
         if (!uiObjectLocalRect.Contains(mousePos))
         {
@@ -58,8 +60,6 @@ public class ItemSeleccionado : MonoBehaviour
     {
         if (objetoSeleccionado.GetComponent<ArmasInventory>() != null)
         {
-            ItemInfo info = objetoSeleccionado.GetComponent<ArmasInventory>().info;
-
             inventoryManager.EquiparArma(objetoSeleccionado);
             print("arma");
             transform.position = new Vector3(-100, -10);

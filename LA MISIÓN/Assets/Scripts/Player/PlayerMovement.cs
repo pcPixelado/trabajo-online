@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bala")
+        if (collision.gameObject.CompareTag("Bala"))
         {
             vidaRestante -= collision.transform.localScale.z;
 

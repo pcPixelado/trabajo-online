@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ArmasInventory : MonoBehaviour
 {
+    public RectTransform Puntero;
+
     public Image image;
     public ItemInfo info;
     private RectTransform rectTransform, spriteRectTransform;
@@ -102,15 +103,15 @@ public class ArmasInventory : MonoBehaviour
 
 
 
-        Rect uiObjectLocalRect = new Rect(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - rectTransform.rect.height + 780, rectTransform.rect.width, rectTransform.rect.height);
+        Rect uiObjectLocalRect = new(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - rectTransform.rect.height + 780, rectTransform.rect.width, rectTransform.rect.height);
 
-        Vector2 mousePos = (Input.mousePosition / Camera.main.scaledPixelWidth * 1600) - new Vector3(460, 60);
+        Vector2 mousePos = (Puntero.position / Camera.main.scaledPixelWidth * 1600) - new Vector3(460, 60);
 
         if (uiObjectLocalRect.Contains(mousePos) && image.enabled)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                clickDerecho.transform.position = Input.mousePosition;
+                clickDerecho.transform.position = Puntero.position;
 
                 clickDerecho.GetComponent<ItemSeleccionado>().objetoSeleccionado = gameObject;
             }
@@ -152,10 +153,10 @@ public class ArmasInventory : MonoBehaviour
             //Soltar un item dentro de otro
             for (int i = 0; i < slotsDeArmas.Length; i++)
             {
-                Vector2 mousePos2 = (Input.mousePosition / Camera.main.scaledPixelWidth * 1600) - new Vector3(31, 60);
+                Vector2 mousePos2 = (Puntero.position / Camera.main.scaledPixelWidth * 1600) - new Vector3(31, 60);
 
                 RectTransform SlotDeArmasRT = slotsDeArmas[i].GetComponent<RectTransform>();
-                Rect SlotDeArmasLocalRect = new Rect(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
+                Rect SlotDeArmasLocalRect = new(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
 
                 if (SlotDeArmasLocalRect.Contains(mousePos2))
                 {

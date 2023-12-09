@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    public RectTransform Puntero;
+
     public GameObject player;
 
     private float Alejamiento = 3;
@@ -18,10 +20,12 @@ public class PlayerCamera : MonoBehaviour
             Alejamiento = player.GetComponent<PlayerController>().armaEquipada.mirillaDeApuntado;
 
             float alejamientoReal = (Alejamiento + 2) / 3;
-            posicionDeLacamara = (player.transform.position + (alejamientoReal - 1) * Camera.main.ScreenToWorldPoint(Input.mousePosition)) / alejamientoReal;
+            posicionDeLacamara = (player.transform.position + (alejamientoReal - 1) * Camera.main.ScreenToWorldPoint(Puntero.position)) / alejamientoReal;
         }
         else posicionDeLacamara = player.transform.position;
 
-        transform.position = posicionDeLacamara + new Vector3(0,0,-10);
+        Vector3 posicionObjetivo = posicionDeLacamara + new Vector3(0,0,-10);
+
+        transform.position = posicionObjetivo;
     }
 }

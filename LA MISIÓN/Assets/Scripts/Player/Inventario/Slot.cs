@@ -21,7 +21,7 @@ public class Slot : MonoBehaviour
 
     public void DetectarSiOcupado(RectTransform objetoEnElInventario)
     {
-        Rect uiObjectLocalRect = new Rect(objetoEnElInventario.anchoredPosition.x, objetoEnElInventario.anchoredPosition.y - objetoEnElInventario.rect.height, objetoEnElInventario.rect.width, objetoEnElInventario.rect.height);
+        Rect uiObjectLocalRect = new(objetoEnElInventario.anchoredPosition.x, objetoEnElInventario.anchoredPosition.y - objetoEnElInventario.rect.height, objetoEnElInventario.rect.width, objetoEnElInventario.rect.height);
 
         if(!Ocupado)Ocupado = uiObjectLocalRect.Contains(uiObjectRect.anchoredPosition);
 

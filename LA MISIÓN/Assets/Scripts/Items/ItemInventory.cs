@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class ItemInventory : MonoBehaviour
 {
+    public RectTransform Puntero;
+
     public Image image;
     public ItemInfo info;
     private RectTransform rectTransform, spriteRectTransform;
@@ -40,15 +42,15 @@ public class ItemInventory : MonoBehaviour
 
 
 
-        Rect uiObjectLocalRect = new Rect(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - rectTransform.rect.height + 780, rectTransform.rect.width, rectTransform.rect.height);
+        Rect uiObjectLocalRect = new(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - rectTransform.rect.height + 780, rectTransform.rect.width, rectTransform.rect.height);
 
-        Vector2 mousePos = (Input.mousePosition / Camera.main.scaledPixelWidth * 1600) - new Vector3(460, 60);
+        Vector2 mousePos = (Puntero.position / Camera.main.scaledPixelWidth * 1600) - new Vector3(460, 60);
 
         if (uiObjectLocalRect.Contains(mousePos) && image.enabled)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                clickDerecho.transform.position = Input.mousePosition;
+                clickDerecho.transform.position = Puntero.position;
 
                 clickDerecho.GetComponent<ItemSeleccionado>().objetoSeleccionado = gameObject;
             }
@@ -98,7 +100,7 @@ public class ItemInventory : MonoBehaviour
             for (int i = 0; i < inventoryManager.itemsDentroDelinventario.Length; i++)
             {
                 RectTransform itemDelInventarioRT = inventoryManager.itemsDentroDelinventario[i].GetComponent<RectTransform>();
-                Rect itemDelInventarioLocalRect = new Rect(itemDelInventarioRT.anchoredPosition.x, itemDelInventarioRT.anchoredPosition.y - itemDelInventarioRT.rect.height + 780, itemDelInventarioRT.rect.width, itemDelInventarioRT.rect.height);
+                Rect itemDelInventarioLocalRect = new(itemDelInventarioRT.anchoredPosition.x, itemDelInventarioRT.anchoredPosition.y - itemDelInventarioRT.rect.height + 780, itemDelInventarioRT.rect.width, itemDelInventarioRT.rect.height);
                 if (itemDelInventarioLocalRect.Contains(uiObjectLocalRect.center))
                 {
                     if (itemDelInventarioRT.gameObject != gameObject)
