@@ -150,6 +150,10 @@ public class ArmasInventory : MonoBehaviour
         }
         else if (AgarrandoItem && (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetButtonUp("xBtn")))
         {
+            if (slotsDeArmas.Length < 1)
+            {
+                slotsDeArmas = inventoryManager.SlotsDeArmas;
+            }
             //Soltar un item dentro de otro
             for (int i = 0; i < slotsDeArmas.Length; i++)
             {

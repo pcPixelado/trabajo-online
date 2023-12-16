@@ -22,7 +22,6 @@ public class Boton : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                print("hi");
                 if (Soltar)
                 {
                     IS.SoltarItemSeleccionado();
