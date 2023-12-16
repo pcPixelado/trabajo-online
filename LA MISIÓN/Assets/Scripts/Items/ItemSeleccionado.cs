@@ -17,9 +17,9 @@ public class ItemSeleccionado : MonoBehaviour
     }
     void Update()
     {
-        Rect uiObjectLocalRect = new(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y, rectTransform.rect.width, rectTransform.rect.height);
+        Rect uiObjectLocalRect = new(rectTransform.anchoredPosition.x - rectTransform.rect.width / 2, rectTransform.anchoredPosition.y - rectTransform.rect.height, rectTransform.rect.width, rectTransform.rect.height);
 
-        Vector2 mousePos = (Puntero.position / Camera.main.scaledPixelWidth * 1600) - new Vector3(600, 750);
+        Vector2 mousePos = (Puntero.position / Camera.main.scaledPixelWidth * 1600);
 
         if (!uiObjectLocalRect.Contains(mousePos))
         {

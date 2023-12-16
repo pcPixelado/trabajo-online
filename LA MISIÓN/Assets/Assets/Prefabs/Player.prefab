@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 3979512409907277670}
   - component: {fileID: 6418464626525503967}
   - component: {fileID: 2639304320381688230}
+  - component: {fileID: 3255732251088823764}
   m_Layer: 5
   m_Name: Soltar
   m_TagString: Untagged
@@ -533,11 +534,11 @@ RectTransform:
   - {fileID: 3379136191937346085}
   m_Father: {fileID: 3091311428077671596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 197.99939, y: 27.713501}
   m_SizeDelta: {x: 160, y: 92.573}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &3979512409907277670
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -632,6 +633,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3255732251088823764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2706801563441356364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50959448252e6f7469e5f686a4ca462c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puntero: {fileID: 6038347990777652765}
+  rectTransform: {fileID: 3280004399692346364}
+  parent: {fileID: 3091311428077671596}
+  IS: {fileID: 739343631356548149}
+  Soltar: 1
+  UsarEquipar: 0
 --- !u!1 &2850444277845348364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.041877236, y: 0.88778025}
   m_AnchorMax: {x: 0.32687697, y: 0.96000004}
-  m_AnchoredPosition: {x: 0.38720703, y: 4.2941895}
+  m_AnchoredPosition: {x: 0.38720703, y: 4.294159}
   m_SizeDelta: {x: 1.0496063, y: 8.411194}
   m_Pivot: {x: 0.50000006, y: 0.49999952}
 --- !u!222 &7775255680961638638
@@ -2421,6 +2440,7 @@ GameObject:
   - component: {fileID: 4904939542577153851}
   - component: {fileID: 7854307336605467432}
   - component: {fileID: 7602685461534328305}
+  - component: {fileID: 7737907088178185216}
   m_Layer: 5
   m_Name: Usar/Equipar
   m_TagString: Untagged
@@ -2443,11 +2463,11 @@ RectTransform:
   - {fileID: 6852727518325008641}
   m_Father: {fileID: 3091311428077671596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 18.000076, y: 27.713509}
   m_SizeDelta: {x: 160, y: 92.573}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &4904939542577153851
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2542,6 +2562,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7737907088178185216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309636603802699505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50959448252e6f7469e5f686a4ca462c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puntero: {fileID: 6038347990777652765}
+  rectTransform: {fileID: 8149990735516467111}
+  parent: {fileID: 3091311428077671596}
+  IS: {fileID: 739343631356548149}
+  Soltar: 0
+  UsarEquipar: 1
 --- !u!1 &8674432623502612521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,10 +2824,10 @@ RectTransform:
   - {fileID: 8149990735516467111}
   m_Father: {fileID: 4540825688227304160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 1172, y: -263.25}
-  m_SizeDelta: {x: 375.871, y: 147.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1972, y: 636.75}
+  m_SizeDelta: {x: 375.87097, y: 147.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7196230740868334836
 CanvasRenderer:

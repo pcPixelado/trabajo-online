@@ -28,8 +28,6 @@ public class ArmasInventory : MonoBehaviour
         clickDerecho = GameObject.FindGameObjectWithTag("ClickDerecho");
 
         spriteRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
-
-        slotsDeArmas = inventoryManager.SlotsDeArmas;
     }
 
     public void CambioDeCartucho()
@@ -160,7 +158,7 @@ public class ArmasInventory : MonoBehaviour
                 RectTransform SlotDeArmasRT = slotsDeArmas[i].GetComponent<RectTransform>();
                 Rect SlotDeArmasLocalRect = new(SlotDeArmasRT.anchoredPosition.x, SlotDeArmasRT.anchoredPosition.y, SlotDeArmasRT.rect.width, SlotDeArmasRT.rect.height);
 
-                print(SlotDeArmasLocalRect + " " + mousePos2);
+                //print(SlotDeArmasLocalRect + " " + mousePos2);
 
                 if (SlotDeArmasLocalRect.Contains(mousePos2))
                 {
