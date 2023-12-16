@@ -41,6 +41,12 @@ public class PlayerCamera : MonoBehaviour
 
         Vector3 posicionObjetivo = posicionDeLacamara + new Vector3(0,0,-10);
 
-        transform.position = Vector3.Slerp( transform.position,posicionObjetivo, 0.2f);
+        if (Input.GetKey(KeyCode.Mouse1) || Gamepad.all.Count > 0)
+        {
+            transform.position = Vector3.Slerp(transform.position, posicionObjetivo, 0.2f);
+        }
+        else transform.position = posicionObjetivo;
+
+
     }
 }

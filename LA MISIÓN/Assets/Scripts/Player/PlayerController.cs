@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerMovement playerMovement;
     private float dispersónPorMovimiento;
-    void Update() // Xbutton run, RigthShoulder fire, circleButton recargar, LeftShoulder Apuntar, squareButton CojerItems, Cruz Armas
+    void FixedUpdate() // Xbutton run, RigthShoulder fire, circleButton recargar, LeftShoulder Apuntar, squareButton CojerItems, Cruz Armas
     {
         if (Gamepad.all.Count > 0)
         {

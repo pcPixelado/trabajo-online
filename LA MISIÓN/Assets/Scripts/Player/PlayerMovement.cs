@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
                 isRunning = false;
             }
 
+
             currentSpeed = isRunning ? runSpeed : walkSpeed;
 
             if (Gamepad.all[0].leftShoulder.value > 0f)
