@@ -221,15 +221,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2416148778533520269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf7a509921ce7e4e9e63a1c7a02b96b, type: 3}
+  m_Script: {fileID: 11500000, guid: e6ea92db17b380947b1a164fdd995b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Puntero: {fileID: 0}
   image: {fileID: 8421051008959984018}
-  info: {fileID: 11400000, guid: e4891727486f47047bfefd6d1cf9cac4, type: 2}
+  info: {fileID: 0}
   clickDerecho: {fileID: 0}
   inventoryManager: {fileID: 0}
   "Munici\xF3n": 0
-  ItemID: 2
+  ItemID: 0
   AmmoIndicator: {fileID: 3059275991822288360}
   AgarrandoItem: 0
 --- !u!1 &3399192967322520053

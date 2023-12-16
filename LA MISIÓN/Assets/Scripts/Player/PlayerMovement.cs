@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (Gamepad.all.Count > 0)
         {
@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 isRunning = false;
             }
+
+            currentSpeed = isRunning ? runSpeed : walkSpeed;
 
             if (Gamepad.all[0].leftShoulder.value > 0f)
             {
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
                 isRunning = false;
             }
 
+            currentSpeed = isRunning ? runSpeed : walkSpeed;
+
             // Mover al personaje
             if (!Input.GetKey(KeyCode.Mouse1))
             {
@@ -59,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Calcular la velocidad en función de si el jugador está corriendo o caminando
-        currentSpeed = isRunning ? runSpeed : walkSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

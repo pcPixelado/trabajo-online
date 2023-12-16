@@ -107,7 +107,6 @@ public class ItemInventory : MonoBehaviour
                     {
                         //Todas las cosas que pasan cuando metes un item dentro de otro justo aquí!!!
 
-
                         if (itemDelInventarioRT.gameObject.GetComponent<ArmasInventory>() != null)
                         {
                             ArmasInventory armaSeleccionada = itemDelInventarioRT.gameObject.GetComponent<ArmasInventory>();

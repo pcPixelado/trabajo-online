@@ -46,7 +46,10 @@ public class InventoryManager : MonoBehaviour
     {
         transform.GetChild(0).GetComponent<Image>().enabled = false;
         transform.GetChild(1).GetComponent<Image>().enabled = false;
-        transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(2).GetComponent<Image>().enabled = false;
+
+        transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new(11, -35);
+        transform.GetChild(2).GetComponent<RectTransform>().localScale = new(0.5f, 0.5f, 1);
 
         for (int i = 0; i < itemsDentroDelinventario.Length; i++)
         {
@@ -61,7 +64,11 @@ public class InventoryManager : MonoBehaviour
     {
         transform.GetChild(0).GetComponent<Image>().enabled = true;
         transform.GetChild(1).GetComponent<Image>().enabled = true;
-        transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(2).GetComponent<Image>().enabled = true;
+
+        transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new(31, 60);
+        transform.GetChild(2).GetComponent<RectTransform>().localScale = new(1,1,1);
+
         inventarioAbierto = true;
 
         for (int i = 0; i < itemsDentroDelinventario.Length; i++)
@@ -137,6 +144,7 @@ public class InventoryManager : MonoBehaviour
             if (armasEquipadas[i] == null)
             {
                 SlotsDeArmas[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+                SlotsDeArmas[i].GetComponent<Image>().color = Color.gray;
             }
             else
             {
@@ -151,10 +159,20 @@ public class InventoryManager : MonoBehaviour
             if(armasEquipadas[0] != null) playerController.gameObjectArmaEquipada = armasEquipadas[0];
             for (int i = 0;i < armasEquipadas.Length; i++)
             {
-                if (armasEquipadas[i] == null) return;
-
-                if (i == 0)armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
-                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+                if (armasEquipadas[i] != null)
+                {
+                    if (i == 0)
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = true;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.cyan;
+                    }
+                    else
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = false;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.white;
+                    }
+                }
+                else SlotsDeArmas[i].GetComponent<Image>().color = Color.gray;
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("Horizontal6Axis") < 0)
@@ -162,10 +180,20 @@ public class InventoryManager : MonoBehaviour
             if (armasEquipadas[1] != null) playerController.gameObjectArmaEquipada = armasEquipadas[1];
             for (int i = 0; i < armasEquipadas.Length; i++)
             {
-                if (armasEquipadas[i] == null) return;
-
-                if (i == 1) armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
-                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+                if (armasEquipadas[i] != null)
+                {
+                    if (i == 1)
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = true;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.cyan;
+                    }
+                    else
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = false;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.white;
+                    }
+                }
+                else SlotsDeArmas[i].GetComponent<Image>().color = Color.gray;
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("Horizontal6Axis") > 0)
@@ -173,10 +201,20 @@ public class InventoryManager : MonoBehaviour
             if (armasEquipadas[2] != null) playerController.gameObjectArmaEquipada = armasEquipadas[2];
             for (int i = 0; i < armasEquipadas.Length; i++)
             {
-                if (armasEquipadas[i] == null) return;
-
-                if (i == 2) armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
-                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+                if (armasEquipadas[i] != null)
+                {
+                    if (i == 2)
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = true;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.cyan;
+                    }
+                    else
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = false;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.white;
+                    }
+                }
+                else SlotsDeArmas[i].GetComponent<Image>().color = Color.gray;
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetAxis("Vertical7Axis") < 0)
@@ -184,10 +222,20 @@ public class InventoryManager : MonoBehaviour
             if (armasEquipadas[3] != null) playerController.gameObjectArmaEquipada = armasEquipadas[3];
             for (int i = 0; i < armasEquipadas.Length; i++)
             {
-                if (armasEquipadas[i] == null) return;
-
-                if (i == 3) armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = true;
-                else armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquìpada = false;
+                if (armasEquipadas[i] != null)
+                {
+                    if (i == 3)
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = true;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.cyan;
+                    }
+                    else
+                    {
+                        armasEquipadas[i].GetComponent<ArmasInventory>().ArmaEquipada = false;
+                        SlotsDeArmas[i].GetComponent<Image>().color = Color.white;
+                    }
+                }
+                else SlotsDeArmas[i].GetComponent<Image>().color = Color.gray;
             }
         }
     }
@@ -350,7 +398,16 @@ public class InventoryManager : MonoBehaviour
 
     public void EquiparArma(GameObject armaAEquipar, int slot)
     {
+        for (int i = 0; i < armasEquipadas.Length; i++)
+        {
+            if(armasEquipadas[i] = armaAEquipar)
+            {
+                armasEquipadas[i] = null;
+            }
+        }
+
         armasEquipadas[slot] = armaAEquipar;
+        SlotsDeArmas[slot].GetComponent<Image>().color = Color.white;
     }
 }
 

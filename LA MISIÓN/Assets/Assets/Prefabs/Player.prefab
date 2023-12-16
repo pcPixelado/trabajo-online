@@ -803,11 +803,11 @@ RectTransform:
   - {fileID: 7221173465844786982}
   m_Father: {fileID: 4540825688227304160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.026248233, y: 0.05777159}
-  m_AnchorMax: {x: 0.26812482, y: 0.9311092}
-  m_AnchoredPosition: {x: -7.838379, y: 5}
-  m_SizeDelta: {x: 5.8867188, y: -6}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 31.218262, y: 60.00006}
+  m_SizeDelta: {x: 392.88672, y: 780}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &1660998649532612712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4524,6 +4524,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0579b488c257cc2468029fdd5aeb1b76, type: 2}
     - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
+      propertyPath: ItemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
       propertyPath: Puntero
       value: 
       objectReference: {fileID: 6038347990777652765}
@@ -4535,6 +4539,10 @@ PrefabInstance:
       propertyPath: clickDerecho
       value: 
       objectReference: {fileID: 9120529747817814999}
+    - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
+      propertyPath: AmmoIndicator
+      value: 
+      objectReference: {fileID: 423847766921879884}
     - target: {fileID: -783643014964721970, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -4636,6 +4644,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
+--- !u!114 &423847766921879884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3059275991822288360, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}
+  m_PrefabInstance: {fileID: 3428774243927221412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4972239769734401638 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7680191781335247554, guid: b620cd46b017ced4ab53ad93c85ca373, type: 3}

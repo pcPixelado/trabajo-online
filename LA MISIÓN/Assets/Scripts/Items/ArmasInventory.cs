@@ -17,7 +17,7 @@ public class ArmasInventory : MonoBehaviour
 
     public int Mejoras;
 
-    public bool CartuchoEquipado, ArmaEquìpada = false;
+    public bool CartuchoEquipado, ArmaEquipada = false;
     public int MunicionEnElCartucho;
 
     public ItemInfo cartucho;
@@ -78,7 +78,7 @@ public class ArmasInventory : MonoBehaviour
     private Vector2 PosicionInicial, distanciaAlCentro, NuevaPosiblePosicion;
     void Update()
     {
-        if (ArmaEquìpada)
+        if (ArmaEquipada)
         {
             if ((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("uBtn")) && !CartuchoEquipado)
             {
