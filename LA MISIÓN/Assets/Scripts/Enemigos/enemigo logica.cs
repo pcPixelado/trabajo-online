@@ -74,8 +74,6 @@ public class EnemyController : MonoBehaviour
         }
         else LanzarRaycast(rayCastAngle, 0.9f);
 
-        print(rayCastAngle + transform.eulerAngles.z);
-
     }
 
     private int municionEnElCartucho = 10;

@@ -20,7 +20,7 @@ public class Boton : MonoBehaviour
 
         if (itemDelInventarioLocalRect.Contains(mousePos2))
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) || Input.GetButtonDown("xBtn"))
             {
                 if (Soltar)
                 {

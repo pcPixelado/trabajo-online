@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                             timer += Time.deltaTime;
                         }
                     }
-                    else if (Input.GetKeyDown(KeyCode.Mouse0) && timer >= armaEquipada.CadenciaDeTiro)
+                    else if (Input.GetKey(KeyCode.Mouse0) && timer >= armaEquipada.CadenciaDeTiro)
                     {
                         Shoot();
                     }

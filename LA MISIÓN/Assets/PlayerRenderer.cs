@@ -29,7 +29,6 @@ public class PlayerRenderer : MonoBehaviour
         {
             shot = false;
         }
-        
 
         if (playerController.armaEquipada != null)
         {
@@ -54,7 +53,47 @@ public class PlayerRenderer : MonoBehaviour
         }
         else
         {
-            Cuerpo.sprite = SpritesCuerpo[0];
+            if (rb.velocity.magnitude == 0)
+            {
+                Cuerpo.sprite = SpritesCuerpo[0];
+                timer = 25f;
+            }
+            else
+            {
+                if (timer > 1 / playerMovement.currentSpeed)
+                {
+                    timer = 0;
+
+                    if (Cambio == 0)
+                    {
+                        Cambio = 1;
+
+                        Cuerpo.sprite = SpritesCuerpo[1];
+                    }
+                    else if (Cambio == 1)
+                    {
+                        Cambio = 2;
+
+                        Cuerpo.sprite = SpritesCuerpo[0];
+                    }
+                    else if (Cambio == 2)
+                    {
+                        Cambio = 3;
+
+                        Cuerpo.sprite = SpritesCuerpo[2];
+                    }
+                    else
+                    {
+                        Cambio = 0;
+
+                        Cuerpo.sprite = SpritesCuerpo[0];
+                    }
+                }
+                else
+                {
+                    timer += Time.deltaTime / 4.7f;
+                }
+            }
         }
 
 
