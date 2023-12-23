@@ -160,6 +160,8 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("Vertical7Axis") > 0)
         {
             if(armasEquipadas[0] != null) playerController.gameObjectArmaEquipada = armasEquipadas[0];
+            else playerController.gameObjectArmaEquipada = null;
+
             for (int i = 0;i < armasEquipadas.Length; i++)
             {
                 if (armasEquipadas[i] != null)
@@ -181,6 +183,8 @@ public class InventoryManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("Horizontal6Axis") < 0)
         {
             if (armasEquipadas[1] != null) playerController.gameObjectArmaEquipada = armasEquipadas[1];
+            else playerController.gameObjectArmaEquipada = null;
+
             for (int i = 0; i < armasEquipadas.Length; i++)
             {
                 if (armasEquipadas[i] != null)
@@ -202,6 +206,8 @@ public class InventoryManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("Horizontal6Axis") > 0)
         {
             if (armasEquipadas[2] != null) playerController.gameObjectArmaEquipada = armasEquipadas[2];
+            else playerController.gameObjectArmaEquipada = null;
+
             for (int i = 0; i < armasEquipadas.Length; i++)
             {
                 if (armasEquipadas[i] != null)
@@ -223,6 +229,8 @@ public class InventoryManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetAxis("Vertical7Axis") < 0)
         {
             if (armasEquipadas[3] != null) playerController.gameObjectArmaEquipada = armasEquipadas[3];
+            else playerController.gameObjectArmaEquipada = null;
+
             for (int i = 0; i < armasEquipadas.Length; i++)
             {
                 if (armasEquipadas[i] != null)

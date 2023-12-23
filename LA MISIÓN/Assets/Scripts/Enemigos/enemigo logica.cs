@@ -132,7 +132,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bala"))
         {
-            vidaRestante -= collision.transform.localScale.z * collision.relativeVelocity.magnitude / 300;
+            vidaRestante -= collision.transform.localScale.z * collision.relativeVelocity.magnitude / 290;
 
             Destroy(collision.gameObject);
         }

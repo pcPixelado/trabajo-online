@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float vida, vidaRestante, walkSpeed = 11f;
     public float runSpeed = 25f; // Velocidad de carrera
-    public Rigidbody2D rig;
+    public Rigidbody2D rb;
     public bool isRunning = false; // Variable para rastrear si el jugador está corriendo
     public Image BarraDeVida;
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         vidaRestante = vida;
-        rig = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
@@ -38,9 +38,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (Gamepad.all[0].leftShoulder.value > 0f)
             {
-                rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
+                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
             }
-            else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
+            else rb.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
         }
         else
         {
@@ -60,9 +60,9 @@ public class PlayerMovement : MonoBehaviour
             // Mover al personaje
             if (!Input.GetKey(KeyCode.Mouse1))
             {
-                rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
+                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed, Input.GetAxis("Vertical") * currentSpeed);
             }
-            else rig.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
+            else rb.velocity = new Vector2(Input.GetAxis("Horizontal") * currentSpeed / 2, Input.GetAxis("Vertical") * currentSpeed / 2);
         }
 
         // Calcular la velocidad en función de si el jugador está corriendo o caminando
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bala"))
         {
-            vidaRestante -= collision.transform.localScale.z * collision.relativeVelocity.magnitude / 300;
+            vidaRestante -= collision.transform.localScale.z * collision.relativeVelocity.magnitude / 290;
 
             BarraDeVida.fillAmount = vidaRestante/vida;
 

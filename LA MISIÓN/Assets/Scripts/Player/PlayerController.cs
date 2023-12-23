@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public InventoryManager inventoryManager;
 
+    public PlayerRenderer playerRenderer;
+
     public AudioSource[] Audio;
     public PlayerMovement playerMovement;
     private float dispersónPorMovimiento;
@@ -63,7 +65,24 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            else armaEquipada = null;
 
+            if (Gamepad.all[0].leftTrigger.value > 0)
+            {
+                Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Puntero.position) - transform.position;
+
+                float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+                //print(angle);
+
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            else
+            {
+                if (playerMovement.rb.velocity.magnitude != 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(playerMovement.rb.velocity.y, playerMovement.rb.velocity.x) * Mathf.Rad2Deg);
+                }
+            }
         }
         else
         {
@@ -110,15 +129,25 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            else armaEquipada = null;
 
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Puntero.position) - transform.position;
+
+                float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
+                //print(angle);
+
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            else
+            {
+                if (playerMovement.rb.velocity.magnitude != 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(playerMovement.rb.velocity.y, playerMovement.rb.velocity.x) * Mathf.Rad2Deg);
+                }
+            }
         }
-
-        Vector3 vectormouse = Camera.main.ScreenToWorldPoint(Puntero.position) - transform.position;
-
-        float angle = Mathf.Atan2(vectormouse.y, vectormouse.x) * Mathf.Rad2Deg;
-        //print(angle);
-
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public bool clampSound;
@@ -127,6 +156,8 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObjectArmaEquipada.GetComponent<ArmasInventory>().MunicionEnElCartucho > 0)
         {
+            playerRenderer.shot = true;
+
             gameObjectArmaEquipada.GetComponent<ArmasInventory>().MunicionEnElCartucho--;
             timer = 0;
 
