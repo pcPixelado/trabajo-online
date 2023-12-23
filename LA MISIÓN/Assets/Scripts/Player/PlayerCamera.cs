@@ -20,10 +20,14 @@ public class PlayerCamera : MonoBehaviour
         {
             if (Gamepad.all[0].leftTrigger.value > 0f && !inventory.inventarioAbierto)
             {
-                Alejamiento = player.GetComponent<PlayerController>().armaEquipada.mirillaDeApuntado;
+                if (player.GetComponent<PlayerController>().armaEquipada != null)
+                {
+                    Alejamiento = player.GetComponent<PlayerController>().armaEquipada.mirillaDeApuntado;
+                }
+                else Alejamiento = 1.5f;
 
                 float alejamientoReal = (Alejamiento + 2) / 3;
-                posicionDeLacamara = (player.transform.position + (alejamientoReal - 1) * Camera.main.ScreenToWorldPoint(Puntero.position)) / alejamientoReal;
+                posicionDeLacamara = (player.transform.position + (alejamientoReal - 1) * Camera.main.ScreenToWorldPoint(new(Puntero.position.x, Puntero.position.y * 1.1f))) / alejamientoReal;
             }
             else posicionDeLacamara = player.transform.position;
         }
@@ -31,7 +35,11 @@ public class PlayerCamera : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse1) && !inventory.inventarioAbierto)
             {
-                Alejamiento = player.GetComponent<PlayerController>().armaEquipada.mirillaDeApuntado;
+                if (player.GetComponent<PlayerController>().armaEquipada != null)
+                {
+                    Alejamiento = player.GetComponent<PlayerController>().armaEquipada.mirillaDeApuntado;
+                }
+                else Alejamiento = 1.5f;
 
                 float alejamientoReal = (Alejamiento + 2) / 3;
                 posicionDeLacamara = (player.transform.position + (alejamientoReal - 1) * Camera.main.ScreenToWorldPoint(Puntero.position)) / alejamientoReal;

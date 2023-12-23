@@ -37,15 +37,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-
-
         if (JugadorEnElCampoDeVisión)
         {
-            destination = player.transform.position;
-            
+            destination = player.transform.position;       
         }
 
-
+        RangoDeVision = armaEquipada.mirillaDeApuntado * 35f;
 
         Vector3 vectorDestination = destination - transform.position;
         float angle = Mathf.Atan2(vectorDestination.y, vectorDestination.x) * Mathf.Rad2Deg;
@@ -109,12 +106,12 @@ public class EnemyController : MonoBehaviour
 
         if (hit)
         {
-            if (hit.transform.tag == "Player" /*|| hit == player*/)
+            if (hit.transform.CompareTag("Player")/*|| hit == player*/)
             {
                 Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
                 JugadorEnElCampoDeVisión = true;
             }
-            else if (hit.transform.tag == "Bala")
+            else if (hit.transform.CompareTag("Bala"))
             {
                 Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
             }
@@ -133,9 +130,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bala")
+        if (collision.gameObject.CompareTag("Bala"))
         {
-            vidaRestante -= collision.transform.localScale.z;
+            vidaRestante -= collision.transform.localScale.z * collision.relativeVelocity.magnitude / 300;
 
             Destroy(collision.gameObject);
         }

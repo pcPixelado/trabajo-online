@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Gamepad.all[0].crossButton.value > 0)
             {
-                dispersónPorMovimiento = (playerMovement.currentSpeed / 11) - 4;
+                dispersónPorMovimiento = (playerMovement.currentSpeed / 15);
             }
             else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
 
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (armaEquipada.Automatica)
                     {
-                        if (Gamepad.all[0].rightTrigger.value > 0 && timer > armaEquipada.CadenciaDeTiro)
+                        if (Gamepad.all[0].rightTrigger.value > 0 && timer >= armaEquipada.CadenciaDeTiro)
                         {
                             Shoot();
                         }
@@ -52,11 +52,11 @@ public class PlayerController : MonoBehaviour
                             timer += Time.deltaTime;
                         }
                     }
-                    else if (Gamepad.all[0].rightShoulder.value > 0 && timer > armaEquipada.CadenciaDeTiro)
+                    else if (Gamepad.all[0].rightShoulder.value > 0 && timer >= armaEquipada.CadenciaDeTiro)
                     {
                         Shoot();
                     }
-                    else if (timer <= armaEquipada.CadenciaDeTiro)
+                    else if (timer < armaEquipada.CadenciaDeTiro)
                     {
                         timer += Time.deltaTime;
                     }
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                dispersónPorMovimiento = (playerMovement.currentSpeed / 11) - 4;
+                dispersónPorMovimiento = (playerMovement.currentSpeed / 15);
             }
             else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
 
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (armaEquipada.Automatica)
                     {
-                        if (Input.GetKey(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+                        if (Input.GetKey(KeyCode.Mouse0) && timer >= armaEquipada.CadenciaDeTiro)
                         {
                             Shoot();
                         }
@@ -95,11 +95,11 @@ public class PlayerController : MonoBehaviour
                             timer += Time.deltaTime;
                         }
                     }
-                    else if (Input.GetKeyDown(KeyCode.Mouse0) && timer > armaEquipada.CadenciaDeTiro)
+                    else if (Input.GetKeyDown(KeyCode.Mouse0) && timer >= armaEquipada.CadenciaDeTiro)
                     {
                         Shoot();
                     }
-                    else if (timer <= armaEquipada.CadenciaDeTiro)
+                    else if (timer < armaEquipada.CadenciaDeTiro)
                     {
                         timer += Time.deltaTime;
                     }
@@ -125,7 +125,9 @@ public class PlayerController : MonoBehaviour
 
             for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
             {
-                GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-(armaEquipada.Dispersión + dispersónPorMovimiento) * 2, (armaEquipada.Dispersión + dispersónPorMovimiento) * 2)));
+                float dispersion = Random.Range(-(armaEquipada.Dispersión + dispersónPorMovimiento) * 2, (armaEquipada.Dispersión + dispersónPorMovimiento) * 2);
+
+                GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + dispersion));
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
 

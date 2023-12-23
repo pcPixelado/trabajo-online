@@ -17,7 +17,10 @@ MonoBehaviour:
   municionMaxima: 0
   inventoryScale: 7
   sprite:
-  - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1287416052, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1287416052, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1287416052, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: -1287416052, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}

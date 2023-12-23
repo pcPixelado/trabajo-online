@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73fd4a18560e4c94fb3d164603209312, type: 3}
-  m_Name: "Esopeta de doble ca\xF1on"
+  m_Name: Francotirador
   m_EditorClassIdentifier: 
-  CadenciaDeTiro: 1.8
-  VelocidadDeLasBalas: 300
-  NumeroDeBalasPorDisparo: 15
-  "Dispersi\xF3n": 25
-  AlcanceSegundos: 1
-  mirillaDeApuntado: 2
+  CadenciaDeTiro: 1
+  VelocidadDeLasBalas: 350
+  NumeroDeBalasPorDisparo: 1
+  "Dispersi\xF3n": 0.01
+  AlcanceSegundos: 2
+  mirillaDeApuntado: 4.5
   TiempoDeRecarga: 1
-  "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 491af8cc5517bcd49902c6bb1b779ea3, type: 3}
+  "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: dbfc5d1e75bece046a2d2634b426dbc6, type: 3}
+  sprite: {fileID: 1708997333, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   Automatica: 0

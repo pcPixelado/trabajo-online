@@ -7,19 +7,19 @@ public class MainMenuManager : MonoBehaviour
 {
     public void PlayBtn()
     {
-        SceneManager.LoadScene("prueba");
+        SceneManager.LoadScene("Nivel 1");
     }
 
     public void OptionsBtn()
     {
         SceneManager.LoadScene("Nivel 2");
     }
-    public void level3Btn()
+    public void Level3Btn()
     {
         SceneManager.LoadScene("Nivel 3");
     }
 
-    public void level4Btn()
+    public void Level4Btn()
     {
         SceneManager.LoadScene("Nivel 4");
     }

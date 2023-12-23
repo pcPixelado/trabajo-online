@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
             }
 
 
-            currentSpeed = isRunning ? runSpeed : walkSpeed;
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) currentSpeed = isRunning ? runSpeed : walkSpeed;
+            else currentSpeed = 0;
 
             if (Gamepad.all[0].leftShoulder.value > 0f)
             {
@@ -53,7 +54,8 @@ public class PlayerMovement : MonoBehaviour
                 isRunning = false;
             }
 
-            currentSpeed = isRunning ? runSpeed : walkSpeed;
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) currentSpeed = isRunning ? runSpeed : walkSpeed;
+            else currentSpeed = 0;
 
             // Mover al personaje
             if (!Input.GetKey(KeyCode.Mouse1))
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bala"))
         {
-            vidaRestante -= collision.transform.localScale.z;
+            vidaRestante -= collision.transform.localScale.z * collision.relativeVelocity.magnitude / 300;
 
             BarraDeVida.fillAmount = vidaRestante/vida;
 

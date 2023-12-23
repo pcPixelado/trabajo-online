@@ -58,6 +58,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         inventarioAbierto = false;
+        oldPos = null;
     }
 
     private void AbrirInventario()
@@ -78,6 +79,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         RecargarSlotsOcupados();
+        oldPos = null;
     }
 
     public void RecargarSlotsOcupados()
@@ -263,6 +265,7 @@ public class InventoryManager : MonoBehaviour
         NewItemOnInventory(info, municionDelItem, false);
     }
 
+    private PosicionLibre oldPos = null;
     public void NewItemOnInventory(ItemInfo info, int municionDelItem, bool armaConCartucho)
     {
         int ancho = info.SlotsX - 1;
@@ -272,7 +275,14 @@ public class InventoryManager : MonoBehaviour
 
         PosicionLibre posicionLibre = EncontrarPosicionLibre(slotsOcupados, ancho, alto);
 
+        if (oldPos == posicionLibre)
+        {
+            NewItemOnInventory(info, municionDelItem, armaConCartucho);
+            return;
+        }
+        else oldPos = posicionLibre;
 
+        RecargarSlotsOcupados();
         // Muestra el resultado
         if (posicionLibre != null)
         {
@@ -352,7 +362,7 @@ public class InventoryManager : MonoBehaviour
                     if (!espacioLibre) break;
                 }
 
-                print(matriz[fila,columna] + " + " + columnas + " y " + filas);
+                //print(matriz[fila,columna] + " + " + columnas + " y " + filas); <-----------
 
                 // Si encontramos espacio libre, devuelve la posición
                 if (espacioLibre)
@@ -368,6 +378,7 @@ public class InventoryManager : MonoBehaviour
 
     public bool ConfirmarUnaPosicion(int fila, int columna, int anchoObjeto, int altoObjeto)
     {
+        oldPos = null;
         RecargarSlotsOcupados();
 
         if (columna < slotsOcupados.GetLength(1) - altoObjeto + 1 && fila < slotsOcupados.GetLength(0) - anchoObjeto + 1)
@@ -400,7 +411,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < armasEquipadas.Length; i++)
         {
-            if(armasEquipadas[i] = armaAEquipar)
+            if(armasEquipadas[i] == armaAEquipar)
             {
                 armasEquipadas[i] = null;
             }
