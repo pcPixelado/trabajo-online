@@ -68,7 +68,14 @@ public class EnemyController : MonoBehaviour
         Vector3 playerDirection = player.transform.position - transform.position;
         float rayCastAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
 
-        LanzarRaycast(rayCastAngle);
+        if (rayCastAngle + transform.eulerAngles.z < 90)
+        {
+            LanzarRaycast(rayCastAngle, 0.2f);
+        }
+        else LanzarRaycast(rayCastAngle, 0.9f);
+
+        print(rayCastAngle + transform.eulerAngles.z);
+
     }
 
     private int municionEnElCartucho = 10;
@@ -98,32 +105,32 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    void LanzarRaycast(float angulo)
+    public void LanzarRaycast(float angulo, float distancia)
     {
         Vector3 direction = new Vector2(Mathf.Cos(angulo * Mathf.Deg2Rad), Mathf.Sin(angulo * Mathf.Deg2Rad));
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + direction * 5, direction, RangoDeVision);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + direction * 5, direction, RangoDeVision * distancia);
 
         if (hit)
         {
             if (hit.transform.CompareTag("Player")/*|| hit == player*/)
             {
-                Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
+                Debug.DrawRay(transform.position, distancia * RangoDeVision * direction, Color.green);
                 JugadorEnElCampoDeVisión = true;
             }
             else if (hit.transform.CompareTag("Bala"))
             {
-                Debug.DrawRay(transform.position, direction * RangoDeVision, Color.green);
+                Debug.DrawRay(transform.position, distancia * RangoDeVision * direction, Color.green);
             }
             else
             {
-                Debug.DrawRay(transform.position, direction * RangoDeVision, Color.red);
+                Debug.DrawRay(transform.position, distancia * RangoDeVision * direction, Color.red);
                 JugadorEnElCampoDeVisión = false;
             }
         }
         else
         {
-            Debug.DrawRay(transform.position, direction * RangoDeVision, Color.red);
+            Debug.DrawRay(transform.position, distancia * RangoDeVision * direction, Color.red);
             JugadorEnElCampoDeVisión = false;
         }
     }
