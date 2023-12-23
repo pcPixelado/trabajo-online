@@ -18,7 +18,6 @@ MonoBehaviour:
   "Dispersi\xF3n": 0.01
   AlcanceSegundos: 2
   mirillaDeApuntado: 4.5
-  TiempoDeRecarga: 1
+  TiempoDeRecarga: 4
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: dbfc5d1e75bece046a2d2634b426dbc6, type: 3}
-  sprite: {fileID: 1708997333, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   Automatica: 0

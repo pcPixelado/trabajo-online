@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3861941d1072ac04d8bb44418544dbdb, type: 3}
-  m_Name: CartuchoDeAK
+  m_Name: CartuchoDeFranco
   m_EditorClassIdentifier: 
   SlotsX: 1
-  SlotsY: 2
-  municionMaxima: 30
-  inventoryScale: 6
+  SlotsY: 1
+  municionMaxima: 7
+  inventoryScale: 5
   sprite:
-  - {fileID: 1591680352, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
-  ItemID: 2
-  CalibreDelArma: 2
+  - {fileID: -1316262960, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  - {fileID: 391096645, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+  ItemID: 3
+  CalibreDelArma: 3
   infoArma: {fileID: 0}

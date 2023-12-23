@@ -67,6 +67,8 @@ public class ArmasInventory : MonoBehaviour
     }
     public void MeterCartucho(GameObject cartuchoParaAdentro)
     {
+        inventoryManager.playerController.Audio[2].Play();
+
         MunicionEnElCartucho = cartuchoParaAdentro.GetComponent<ItemInventory>().Munición;
         cartucho = cartuchoParaAdentro.GetComponent<ItemInventory>().info;
         Destroy(cartuchoParaAdentro);

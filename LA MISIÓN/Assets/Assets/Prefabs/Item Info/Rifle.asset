@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861941d1072ac04d8bb44418544dbdb, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  SlotsX: 5
+  SlotsX: 6
   SlotsY: 2
   municionMaxima: 0
-  inventoryScale: 7
+  inventoryScale: 7.5
   sprite:
   - {fileID: -1287416052, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -1287416052, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
@@ -26,5 +26,5 @@ MonoBehaviour:
   - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -1951998859, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   ItemID: 0
-  CalibreDelArma: 2
+  CalibreDelArma: 4
   infoArma: {fileID: 11400000, guid: acac856f61d0ed040a2bdfab30f65769, type: 2}

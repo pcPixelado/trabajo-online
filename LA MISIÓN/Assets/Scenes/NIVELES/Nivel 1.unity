@@ -2394,6 +2394,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f621dd9917fbf44b8b0c5e57ab847ba, type: 3}
+--- !u!1001 &408563951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fc4f97a346624f4fb96ba8a621c2238, type: 2}
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: Municion
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 165.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 150.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_Name
+      value: Municion en el suelo (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
 --- !u!1 &495496371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,7 +2571,7 @@ PrefabInstance:
       objectReference: {fileID: 1708997333, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
     - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
       propertyPath: m_Name
-      value: Municion en el suelo (3)
+      value: Francotirador en el suelo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2658,6 +2723,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f621dd9917fbf44b8b0c5e57ab847ba, type: 3}
+--- !u!1001 &939824652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fc4f97a346624f4fb96ba8a621c2238, type: 2}
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: Municion
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 156.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 128.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_Name
+      value: Municion en el suelo (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
 --- !u!1 &1006813735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +3038,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3075493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1096183565
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fc4f97a346624f4fb96ba8a621c2238, type: 2}
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: Municion
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 185.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 154.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_Name
+      value: Municion en el suelo (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
 --- !u!1001 &1218769862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2967,6 +3162,71 @@ PrefabInstance:
     - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
       propertyPath: m_Name
       value: Municion en el suelo (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+--- !u!1001 &1233975468
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fc4f97a346624f4fb96ba8a621c2238, type: 2}
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: Municion
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 152.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_Name
+      value: Municion en el suelo (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17238,6 +17498,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+--- !u!1001 &2017806495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 34e6451b4f70d8649975a841af5f6353, type: 2}
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: Municion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680075268212901820, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: cartuchoEquipado
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 140.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 155.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681559056019686248, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765076222003018741, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -929673393, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
+    - target: {fileID: 8572181744385387473, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
+      propertyPath: m_Name
+      value: Francotirador en el suelo (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab0ca57ae0cccc945bf8417a88b60233, type: 3}
 --- !u!1001 &2126316535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17493,5 +17826,10 @@ SceneRoots:
   - {fileID: 6665920360823429601}
   - {fileID: 1386139507}
   - {fileID: 836308150}
+  - {fileID: 2017806495}
   - {fileID: 1218769862}
+  - {fileID: 1233975468}
+  - {fileID: 939824652}
+  - {fileID: 408563951}
+  - {fileID: 1096183565}
   - {fileID: 1931405174}

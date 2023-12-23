@@ -33,7 +33,8 @@ public class ItemInventory : MonoBehaviour
     private Vector2 PosicionInicial, distanciaAlCentro, NuevaPosiblePosicion;
     void Update()
     {
-        image.sprite = info.sprite[0];
+        if(Munición == 0)image.sprite = info.sprite[0];
+        else image.sprite = info.sprite[1];
 
         rectTransform.sizeDelta = new Vector2(info.SlotsX * 120, info.SlotsY * 120);
 

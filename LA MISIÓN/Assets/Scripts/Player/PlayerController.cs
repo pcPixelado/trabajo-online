@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public InventoryManager inventoryManager;
 
+    public AudioSource[] Audio;
     public PlayerMovement playerMovement;
     private float dispersónPorMovimiento;
     void FixedUpdate() // Xbutton run, RigthShoulder fire, circleButton recargar, LeftShoulder Apuntar, squareButton CojerItems, Cruz Armas
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
             }
             else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
 
-            if (Gamepad.all[0].circleButton.value > 0)
+            if (Gamepad.all[0].circleButton.value > 0 && armaEquipada != null)
             {
                 timer = -armaEquipada.TiempoDeRecarga;
             }
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
                     {
                         Shoot();
                     }
-                    else if (timer < armaEquipada.CadenciaDeTiro)
+                    else if (timer <= armaEquipada.CadenciaDeTiro + 1)
                     {
                         timer += Time.deltaTime;
                     }
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
             }
             else dispersónPorMovimiento = playerMovement.currentSpeed / 11;
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && armaEquipada != null)
             {
                 timer = -armaEquipada.TiempoDeRecarga;
             }
@@ -99,7 +100,11 @@ public class PlayerController : MonoBehaviour
                     {
                         Shoot();
                     }
-                    else if (timer < armaEquipada.CadenciaDeTiro)
+                    else if (Input.GetKeyUp(KeyCode.Mouse0) && timer >= armaEquipada.CadenciaDeTiro)
+                    {
+                        Shoot();
+                    }
+                    else if (timer <= armaEquipada.CadenciaDeTiro + 1)
                     {
                         timer += Time.deltaTime;
                     }
@@ -116,12 +121,27 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    public bool clampSound;
+
     void Shoot()
     {
         if (gameObjectArmaEquipada.GetComponent<ArmasInventory>().MunicionEnElCartucho > 0)
         {
             gameObjectArmaEquipada.GetComponent<ArmasInventory>().MunicionEnElCartucho--;
             timer = 0;
+
+            if (clampSound == true)
+            {
+                Audio[1].Stop();
+                Audio[0].Play();
+                clampSound = false;
+            }
+            else 
+            {
+                Audio[0].Stop();
+                Audio[1].Play();
+                clampSound = true;
+            }
 
             for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
             {

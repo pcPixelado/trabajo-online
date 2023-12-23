@@ -18,6 +18,6 @@ MonoBehaviour:
   "Dispersi\xF3n": 3
   AlcanceSegundos: 1
   mirillaDeApuntado: 2.5
-  TiempoDeRecarga: 3
+  TiempoDeRecarga: 4
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 05d6154c6ab2ca842bcf8d16ff83a06b, type: 3}
   Automatica: 1

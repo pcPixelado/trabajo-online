@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861941d1072ac04d8bb44418544dbdb, type: 3}
   m_Name: Francotirador
   m_EditorClassIdentifier: 
-  SlotsX: 6
+  SlotsX: 7
   SlotsY: 2
   municionMaxima: 0
-  inventoryScale: 7.5
+  inventoryScale: 8
   sprite:
   - {fileID: -235545217, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}
   - {fileID: -235545217, guid: ee5a4efcdb0594f418464e7bf42993a5, type: 3}

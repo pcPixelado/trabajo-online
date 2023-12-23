@@ -23,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     public PlayerController playerController;
 
     public GameObject[] SlotsDeArmas;
+    public GameObject objetoEnElSuelo;
     private void Awake()
     {
         slots = new GameObject[slotsX, slotsY];
@@ -331,6 +332,12 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
+            GameObject newitem = Instantiate(objetoEnElSuelo, transform.parent.parent.parent.GetChild(1).position, Quaternion.identity);
+
+            newitem.GetComponent<ItemGround>().info = info;
+
+            newitem.GetComponent<ItemGround>().Municion = municionDelItem;
+            newitem.GetComponent<ItemGround>().cartuchoEquipado = armaConCartucho;
             print("No se encontró espacio libre para el objeto.");
         }
 
