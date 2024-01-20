@@ -1481,6 +1481,7 @@ MonoBehaviour:
   gameObjectArmaEquipada: {fileID: 0}
   timer: 0
   inventoryManager: {fileID: 950681896722476611}
+  playerRenderer: {fileID: 1154157135728109910}
   Audio:
   - {fileID: 702786627189397726}
   - {fileID: 5818217463271256387}
@@ -2237,14 +2238,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6640487521907666236}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.8}
   m_LocalScale: {x: 11, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2555581470144636463}
   m_Father: {fileID: 6071821863911140167}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &5506228524276406423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2328,6 +2329,7 @@ MonoBehaviour:
   - {fileID: 234444512, guid: b5304dc57f1bfaf4b97e656d2917f2d6, type: 3}
   - {fileID: 1864885160, guid: b5304dc57f1bfaf4b97e656d2917f2d6, type: 3}
   - {fileID: 215045268, guid: b5304dc57f1bfaf4b97e656d2917f2d6, type: 3}
+  shot: 0
 --- !u!1 &7817501816294343327
 GameObject:
   m_ObjectHideFlags: 0

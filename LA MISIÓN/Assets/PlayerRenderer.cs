@@ -60,39 +60,23 @@ public class PlayerRenderer : MonoBehaviour
             }
             else
             {
-                if (timer > 1 / playerMovement.currentSpeed)
-                {
-                    timer = 0;
-
-                    if (Cambio == 0)
+                    if (Cambio == 0 || Cambio == 4)
                     {
-                        Cambio = 1;
-
                         Cuerpo.sprite = SpritesCuerpo[1];
                     }
-                    else if (Cambio == 1)
+                    else if (Cambio == 1 || Cambio == 5)
                     {
-                        Cambio = 2;
-
                         Cuerpo.sprite = SpritesCuerpo[0];
                     }
-                    else if (Cambio == 2)
+                    else if (Cambio == 2 || Cambio == 6)
                     {
-                        Cambio = 3;
-
                         Cuerpo.sprite = SpritesCuerpo[2];
                     }
-                    else
+                    else if(Cambio == 3)
                     {
-                        Cambio = 0;
-
                         Cuerpo.sprite = SpritesCuerpo[0];
                     }
-                }
-                else
-                {
-                    timer += Time.deltaTime / 4.7f;
-                }
+                    else Cuerpo.sprite = SpritesCuerpo[0];
             }
         }
 
@@ -120,13 +104,37 @@ public class PlayerRenderer : MonoBehaviour
                 {
                     Cambio = 2;
 
-                    Piernas.sprite = SpritesPiernas[0];
+                    Piernas.sprite = SpritesPiernas[1];
                 }
                 else if (Cambio == 2)
                 {
                     Cambio = 3;
 
+                    Piernas.sprite = SpritesPiernas[0];
+                }
+                else if (Cambio == 3)
+                {
+                    Cambio = 4;
+
+                    Piernas.sprite = SpritesPiernas[0];
+                }
+                else if (Cambio == 4)
+                {
+                    Cambio = 5;
+
                     Piernas.sprite = SpritesPiernas[2];
+                }
+                else if (Cambio == 5)
+                {
+                    Cambio = 6;
+
+                    Piernas.sprite = SpritesPiernas[2];
+                }
+                else if (Cambio == 6)
+                {
+                    Cambio = 7;
+
+                    Piernas.sprite = SpritesPiernas[0];
                 }
                 else
                 {
@@ -134,10 +142,11 @@ public class PlayerRenderer : MonoBehaviour
 
                     Piernas.sprite = SpritesPiernas[0];
                 }
+
             }
             else
             {
-                timer += Time.deltaTime / 4.7f;
+                timer += Time.deltaTime / 2.35f;
             }
         }
     }
