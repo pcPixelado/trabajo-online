@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 883768848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e98d732c68e18242a024fe0eb3cb7d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 54db1227f4638fa45a936c6d865f3846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1058741842
@@ -2046,8 +2046,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 883768853}
-        m_TargetAssemblyTypeName: MainMenuManager1, Assembly-CSharp
-        m_MethodName: PlayBtn
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: OptionsBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
