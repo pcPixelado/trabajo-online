@@ -24,4 +24,9 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Nivel 4");
     }
 
+    public void REVIVIRBtn()
+    {
+        SceneManager.LoadScene("Nivel 1");
+    }
+
 }
