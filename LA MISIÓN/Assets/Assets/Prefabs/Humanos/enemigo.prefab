@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armaEquipada: {fileID: 11400000, guid: 16115faad71f53e41b765a39e7c26d67, type: 2}
+  cadaver: {fileID: 5176740402799346410, guid: a01c0277379440f4b9f048550d21c1d4, type: 3}
   firePoint: {fileID: 958489068953975758}
   Firetime: 0
   RangoDeVision: 100

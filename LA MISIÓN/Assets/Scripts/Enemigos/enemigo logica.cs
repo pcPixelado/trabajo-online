@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
 {
     public Armas armaEquipada;
 
+    public GameObject cadaver;
+
     private GameObject player;
     public Transform firePoint;
     public float Firetime = 0;
@@ -147,6 +149,7 @@ public class EnemyController : MonoBehaviour
 
         if (vidaRestante < 0)
         {
+            Instantiate(cadaver, transform.position, Quaternion.Euler(0,0,Random.Range(0,0)));
             Destroy(gameObject);
         }
     }
