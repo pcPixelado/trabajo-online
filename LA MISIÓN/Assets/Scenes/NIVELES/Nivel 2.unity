@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cf9f7ccb8932145b5909a4f032313d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: MainMenu
+  sceneName: final juego
 --- !u!61 &785130442
 BoxCollider2D:
   m_ObjectHideFlags: 0

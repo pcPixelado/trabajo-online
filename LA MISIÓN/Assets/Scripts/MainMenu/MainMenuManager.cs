@@ -12,7 +12,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OptionsBtn()
     {
-        SceneManager.LoadScene("Nivel 2");
+        SceneManager.LoadScene("NIVELES");
     }
     public void Level3Btn()
     {
@@ -22,6 +22,11 @@ public class MainMenuManager : MonoBehaviour
     public void Level4Btn()
     {
         SceneManager.LoadScene("Nivel 4");
+    }
+
+    public void REVIVIRBtn()
+    {
+        SceneManager.LoadScene("Nivel 1");
     }
 
 }
