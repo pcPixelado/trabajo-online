@@ -128,6 +128,7 @@ public class ArmasInventory : MonoBehaviour
 
         if (AgarrandoItem && (Input.GetKey(KeyCode.Mouse0) || Input.GetButton("xBtn")))
         {
+            inventoryManager.RecargarSlotsOcupados();
             rectTransform.anchoredPosition = mousePos + distanciaAlCentro;
 
             float DistanciaMasCercana = 1000;
@@ -143,7 +144,6 @@ public class ArmasInventory : MonoBehaviour
                     } 
                 }
             }
-
             if (inventoryManager.ConfirmarUnaPosicion(Mathf.RoundToInt(coordsMasCercanas.x), Mathf.RoundToInt(coordsMasCercanas.y), info.SlotsX, info.SlotsY))
             {
                 NuevaPosiblePosicion = inventoryManager.slots[Mathf.RoundToInt(coordsMasCercanas.x), Mathf.RoundToInt(coordsMasCercanas.y)].GetComponent<RectTransform>().anchoredPosition + new Vector2(-1,1);

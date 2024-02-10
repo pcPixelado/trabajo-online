@@ -73,6 +73,7 @@ public class ItemInventory : MonoBehaviour
 
         if (AgarrandoItem && (Input.GetKey(KeyCode.Mouse0) || Input.GetButton("xBtn")))
         {
+            inventoryManager.RecargarSlotsOcupados();
             rectTransform.anchoredPosition = mousePos + distanciaAlCentro;
 
             float DistanciaMasCercana = 1000;
@@ -127,7 +128,6 @@ public class ItemInventory : MonoBehaviour
                 }
             }
             //sacar la respuesta
-
 
             AgarrandoItem = false;
 

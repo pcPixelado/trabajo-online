@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/cdm.unity
     guid: 9e4dcd77374ea84488cfb463593d4180
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ENDING.unity
     guid: 4a4a4944ceece4e439706242fd340c58
   m_configObjects: {}

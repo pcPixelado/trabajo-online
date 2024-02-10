@@ -27,7 +27,6 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         slots = new GameObject[slotsX, slotsY];
-        slotsDetected = GameObject.FindGameObjectsWithTag("Slot");
 
         slotsOcupados = new bool[slotsX, slotsY];
 
@@ -284,12 +283,14 @@ public class InventoryManager : MonoBehaviour
 
         PosicionLibre posicionLibre = EncontrarPosicionLibre(slotsOcupados, ancho, alto);
 
-        if (oldPos == posicionLibre)
-        {
-            NewItemOnInventory(info, municionDelItem, armaConCartucho);
-            return;
-        }
-        else oldPos = posicionLibre;
+        //Nota: no hacer aceleradores de partculas caseros en unity porfavor
+
+        //if (oldPos == posicionLibre)
+        //{
+        //    NewItemOnInventory(info, municionDelItem, armaConCartucho);
+        //    return;
+        //}
+        //else oldPos = posicionLibre;
 
         RecargarSlotsOcupados();
         // Muestra el resultado
@@ -340,6 +341,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
+            print("¡LLAMEN A DIOS!");
             GameObject newitem = Instantiate(objetoEnElSuelo, transform.parent.parent.parent.GetChild(1).position, Quaternion.identity);
 
             newitem.GetComponent<ItemGround>().info = info;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Slot : MonoBehaviour
         Rect uiObjectLocalRect = new(objetoEnElInventario.anchoredPosition.x, objetoEnElInventario.anchoredPosition.y - objetoEnElInventario.rect.height, objetoEnElInventario.rect.width, objetoEnElInventario.rect.height);
 
         if(!Ocupado)Ocupado = uiObjectLocalRect.Contains(uiObjectRect.anchoredPosition);
+        //print(Ocupado);
 
         //if (Ocupado) print(Ocupado + " es " + gameObject);
     }
