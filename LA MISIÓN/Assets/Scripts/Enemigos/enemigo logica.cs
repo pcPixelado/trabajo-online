@@ -82,18 +82,21 @@ public class EnemyController : MonoBehaviour
     {
         if (municionEnElCartucho > 0)
         {
-            municionEnElCartucho--;
-            Firetime = 0;
-            for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
+            if (Random.Range(0,100) > 5)
             {
-                GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-armaEquipada.Dispersión * 2, armaEquipada.Dispersión * 2)));
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
+                municionEnElCartucho--;
+                Firetime = 0;
+                for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
+                {
+                    GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-armaEquipada.Dispersión * 2.2f, armaEquipada.Dispersión * 2.2f)));
+                    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                    rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
 
-                // Destruye la bala después de 1 segundos.
-                Destroy(bullet, armaEquipada.AlcanceSegundos); // 1f representa 1 segundos.
+                    // Destruye la bala después de 1 segundos.
+                    Destroy(bullet, armaEquipada.AlcanceSegundos); // 1f representa 1 segundos.
+                }
             }
-
+            else Firetime = armaEquipada.CadenciaDeTiro / 2;
         }
         else
         {
