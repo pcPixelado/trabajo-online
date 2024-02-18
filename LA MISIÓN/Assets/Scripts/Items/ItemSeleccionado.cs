@@ -41,7 +41,7 @@ public class ItemSeleccionado : MonoBehaviour
         else info = objetoSeleccionado.GetComponent<ArmasInventory>().info;
 
         Destroy(objetoSeleccionado);
-        GameObject newitem = Instantiate(objetoEnElSuelo, transform.parent.parent.parent.GetChild(1).position, Quaternion.identity);
+        GameObject newitem = Instantiate(objetoEnElSuelo, transform.parent.parent.parent.GetChild(1).position + new Vector3(0,0,-0.5f), Quaternion.identity);
         newitem.GetComponent<ItemGround>().info = info;
 
         if (objetoSeleccionado.GetComponent<ItemInventory>() != null)

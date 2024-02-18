@@ -285,12 +285,12 @@ public class InventoryManager : MonoBehaviour
 
         //Nota: no hacer aceleradores de partculas caseros en unity porfavor
 
-        //if (oldPos == posicionLibre)
-        //{
-        //    NewItemOnInventory(info, municionDelItem, armaConCartucho);
-        //    return;
-        //}
-        //else oldPos = posicionLibre;
+        if (oldPos == posicionLibre)
+        {
+            NewItemOnInventory(info, municionDelItem, armaConCartucho);
+            return;
+        }
+        else oldPos = posicionLibre;
 
         RecargarSlotsOcupados();
         // Muestra el resultado
@@ -341,7 +341,6 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            print("¡LLAMEN A DIOS!");
             GameObject newitem = Instantiate(objetoEnElSuelo, transform.parent.parent.parent.GetChild(1).position, Quaternion.identity);
 
             newitem.GetComponent<ItemGround>().info = info;

@@ -25,11 +25,8 @@ public class ItemGround : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("uBtn"))
             {
-                print("so");
                 inventoryManager.NewItemOnInventory(info, Municion, cartuchoEquipado);
-                print("so2");
                 Destroy(gameObject);
-                
             }
         }
     }

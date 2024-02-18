@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fd4a18560e4c94fb3d164603209312, type: 3}
   m_Name: Pistola1
   m_EditorClassIdentifier: 
-  CadenciaDeTiro: 1
+  CadenciaDeTiro: 0.5
   VelocidadDeLasBalas: 300
   NumeroDeBalasPorDisparo: 1
-  "Dispersi\xF3n": 3
+  "Dispersi\xF3n": 2
   AlcanceSegundos: 1
   mirillaDeApuntado: 2
   TiempoDeRecarga: 1
   "TipoDeMunic\xEDon": {fileID: 6178096102459924993, guid: 1c07e01739bbc3841a6e02cb3c3e02e5, type: 3}
-  sprite: {fileID: 0}
   Automatica: 0
