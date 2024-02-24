@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     public float Firetime = 0;
     public float RangoDeVision;
 
-    private bool JugadorEnElCampoDeVisión, recargando;
+    private bool JugadorEnElCampoDeVisión, recargando, cagao = false;
 
     private Vector3 posicionesEstrategicas;
 
@@ -39,26 +39,42 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (vidaRestante < vida / 2 && !cagao)
+        {
+            BuscaCobertura();
+            if (!JugadorEnElCampoDeVisión)
+            {
+                cagao = true;
+            }
+        }
+        else
+        {
+            if (vidaRestante < vida / 3)
+            {
+                posicionJugadorMemoria = player.transform.position;
+            }
+
+            if (posicionJugadorMemoria != Vector3.zero)
+            {
+                if (recargando)
+                {
+                    BuscaCobertura();
+                }
+                else
+                {
+                    OfensivaAlJugador();
+                }
+            }
+        }
+
         if (JugadorEnElCampoDeVisión)
         {
             posicionJugadorMemoria = player.transform.position;
         }
 
-        if (posicionJugadorMemoria != Vector3.zero)
-        {
-            if (recargando)
-            {
-                BuscaCobertura();
-            }
-            else
-            {
-                OfensivaAlJugador();
-            }
-        }
-
         RangoDeVision = armaEquipada.mirillaDeApuntado * 35f;
 
-        Vector3 vectorDestination = posicionJugadorMemoria - transform.position;
+        Vector3 vectorDestination = destination - transform.position + new Vector3(0.5f, 0.5f);
         float angle = Mathf.Atan2(vectorDestination.y, vectorDestination.x) * Mathf.Rad2Deg;
 
         if (JugadorEnElCampoDeVisión)
@@ -91,7 +107,7 @@ public class EnemyController : MonoBehaviour
     {
         if (municionEnElCartucho > 0)
         {
-            if (Random.Range(0,11) > 1)
+            if (Random.Range(0,10) > 1)
             {
                 recargando = false;
                 municionEnElCartucho--;
@@ -100,7 +116,7 @@ public class EnemyController : MonoBehaviour
                 {
                     GameObject bullet = Instantiate(armaEquipada.TipoDeMunicíon, firePoint.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + Random.Range(-armaEquipada.Dispersión * 2.2f, armaEquipada.Dispersión * 2.2f)));
                     Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                    rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
+                    rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas * 0.8f;
 
                     // Destruye la bala después de x segundos.
                     Destroy(bullet, armaEquipada.AlcanceSegundos);
@@ -111,7 +127,8 @@ public class EnemyController : MonoBehaviour
         else
         {
             Firetime = -armaEquipada.TiempoDeRecarga;
-            municionEnElCartucho = 15;
+            if (vidaRestante < vida / 3) municionEnElCartucho = 10;
+            else municionEnElCartucho = 15;
             recargando = true;
             posicionesEstrategicas = new Vector3(Random.Range(-85, 85), Random.Range(-85, 85));
         }
@@ -170,18 +187,28 @@ public class EnemyController : MonoBehaviour
         {
             destination = (transform.position - posicionJugadorMemoria) / 3 + transform.position + posicionesEstrategicas;
         }
-        else destination = transform.position;
+        else
+        {
+            destination = transform.position;
+        }
 
-        agent.speed = 18;
+        if(vidaRestante < vida/3)agent.speed = 11;
+        else agent.speed = 20;
     }
     public void OfensivaAlJugador()
     {
-        agent.speed = 10;
         if (!JugadorEnElCampoDeVisión)
         {
+            if (vidaRestante < vida / 3) agent.speed = 8;
+            else agent.speed = 10;
             destination = posicionJugadorMemoria;
+            print("ofensiva");
         }
-        else destination = transform.position;
+        else
+        {
+            destination = posicionJugadorMemoria;
+            agent.speed = 2;
+        }
 
     }
 }
