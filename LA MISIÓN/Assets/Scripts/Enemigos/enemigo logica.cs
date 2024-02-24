@@ -14,11 +14,11 @@ public class EnemyController : MonoBehaviour
     public float Firetime = 0;
     public float RangoDeVision;
 
-    private bool JugadorEnElCampoDeVisión;
+    private bool JugadorEnElCampoDeVisión, recargando;
 
-    public Vector3 posicionesEstrategicas;
+    private Vector3 posicionesEstrategicas;
 
-    public bool SeguirAlJugador;
+    public Vector3 posicionJugadorMemoria;
 
     private Vector3 destination;
     private NavMeshAgent agent;
@@ -41,12 +41,24 @@ public class EnemyController : MonoBehaviour
     {
         if (JugadorEnElCampoDeVisión)
         {
-            destination = player.transform.position;       
+            posicionJugadorMemoria = player.transform.position;
+        }
+
+        if (posicionJugadorMemoria != Vector3.zero)
+        {
+            if (recargando)
+            {
+                BuscaCobertura();
+            }
+            else
+            {
+                OfensivaAlJugador();
+            }
         }
 
         RangoDeVision = armaEquipada.mirillaDeApuntado * 35f;
 
-        Vector3 vectorDestination = destination - transform.position;
+        Vector3 vectorDestination = posicionJugadorMemoria - transform.position;
         float angle = Mathf.Atan2(vectorDestination.y, vectorDestination.x) * Mathf.Rad2Deg;
 
         if (JugadorEnElCampoDeVisión)
@@ -70,12 +82,7 @@ public class EnemyController : MonoBehaviour
         Vector3 playerDirection = player.transform.position - transform.position;
         float rayCastAngle = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
 
-        if (rayCastAngle + transform.eulerAngles.z < 90)
-        {
-            LanzarRaycast(rayCastAngle, 0.2f);
-        }
-        else LanzarRaycast(rayCastAngle, 0.9f);
-
+        LanzarRaycast(rayCastAngle, 0.9f);
     }
 
     private int municionEnElCartucho = 10;
@@ -84,8 +91,9 @@ public class EnemyController : MonoBehaviour
     {
         if (municionEnElCartucho > 0)
         {
-            if (Random.Range(0,100) > 5)
+            if (Random.Range(0,11) > 1)
             {
+                recargando = false;
                 municionEnElCartucho--;
                 Firetime = 0;
                 for (int i = 0; i < armaEquipada.NumeroDeBalasPorDisparo; i++)
@@ -94,8 +102,8 @@ public class EnemyController : MonoBehaviour
                     Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                     rb.velocity = bullet.transform.right * armaEquipada.VelocidadDeLasBalas;
 
-                    // Destruye la bala después de 1 segundos.
-                    Destroy(bullet, armaEquipada.AlcanceSegundos); // 1f representa 1 segundos.
+                    // Destruye la bala después de x segundos.
+                    Destroy(bullet, armaEquipada.AlcanceSegundos);
                 }
             }
             else Firetime = armaEquipada.CadenciaDeTiro / 2;
@@ -103,7 +111,9 @@ public class EnemyController : MonoBehaviour
         else
         {
             Firetime = -armaEquipada.TiempoDeRecarga;
-            municionEnElCartucho = 20;
+            municionEnElCartucho = 15;
+            recargando = true;
+            posicionesEstrategicas = new Vector3(Random.Range(-85, 85), Random.Range(-85, 85));
         }
 
     }
@@ -152,5 +162,26 @@ public class EnemyController : MonoBehaviour
             Instantiate(cadaver, transform.position, Quaternion.Euler(0,0,Random.Range(0,0)));
             Destroy(gameObject);
         }
+    }
+
+    public void BuscaCobertura()
+    {
+        if (JugadorEnElCampoDeVisión)
+        {
+            destination = (transform.position - posicionJugadorMemoria) / 3 + transform.position + posicionesEstrategicas;
+        }
+        else destination = transform.position;
+
+        agent.speed = 18;
+    }
+    public void OfensivaAlJugador()
+    {
+        agent.speed = 10;
+        if (!JugadorEnElCampoDeVisión)
+        {
+            destination = posicionJugadorMemoria;
+        }
+        else destination = transform.position;
+
     }
 }
